@@ -1416,3 +1416,40 @@ img {
 .swot__content.swot__open .uil-angle-down{
   transform:rotate(-180deg);
 }
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+}
+
+.rtl .nav__list {
+  text-align: right;
+}
+
+.rtl .home__social {
+  left: auto;
+  right: 0;
+}
+
+.rtl .button__icon {
+  margin-left: 0;
+  margin-right: var(--mb-0-5);
+}
+
+.rtl .skills__arrow,
+.rtl .swiper-button-next,
+.rtl .swiper-button-prev {
+  transform: scaleX(-1);
+}
+
+/* Language button styling */
+.change-language {
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.change-language:hover {
+  color: var(--first-color);
+}
