@@ -300,6 +300,12 @@ const cvPaths = {
   ar: 'assets/pdf/Abdelrhman-CV-AR.pdf'
 };
 
+
+/* 
+======================
+TRANSLATION SECTION
+======================
+
 // Translation function
 function translatePage(lang) {
   try {
@@ -512,6 +518,7 @@ function translatePage(lang) {
     console.error('Error in translatePage:', error);
   }
 }
+*/
 
 document.addEventListener('DOMContentLoaded', () => {
   const savedLang = localStorage.getItem('preferredLanguage') || 'en';
