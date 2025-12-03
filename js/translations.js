@@ -301,10 +301,7 @@ const cvPaths = {
 };
 
 
-/* 
-======================
-TRANSLATION SECTION
-======================
+
 
 // Translation function
 function translatePage(lang) {
@@ -518,7 +515,7 @@ function translatePage(lang) {
     console.error('Error in translatePage:', error);
   }
 }
-*/
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const savedLang = localStorage.getItem('preferredLanguage') || 'en';
