@@ -127,7 +127,7 @@ const translations = {
     contact: {
       title: "Contact Me",
       subtitle: "Get in touch",
-      call: "Call Me",
+      call: "Phone Number",
       email: "Email",
       location: "Location",
       name: "Name",
