@@ -1453,3 +1453,10 @@ img {
 .change-language:hover {
   color: var(--first-color);
 }
+
+.organized-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 500px;
+}
