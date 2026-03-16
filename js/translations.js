@@ -42,7 +42,39 @@ const translations = {
       title: "Qualification",
       subtitle: "My professional journey",
       education: "Education",
-      work: "Work"
+      work: "Work",
+      educationList: [
+        {
+          title: "Bachelor Of Mechatronics Engineering (Hons.)",
+          subtitle: "Asia Pacific University, Malaysia",
+          date: "2021 - 2025"
+        },
+                {
+          title: "Master Of Mechatronics Engineering",
+          subtitle: "De Montfort University, Completed through a collaborative programme with Asia Pacific University",
+          date: "2021 - 2025"
+        }
+      ],
+      workList: [
+        {
+          title: "Machine Vision Intern",
+          subtitle: "Control Easy Technology Sdn. Bhd. , Malaysia",
+          date: "Feb 2024 – Jun 2024",
+          details: [
+            "Developed a real-time machine vision system for ECU defect detection using Zebra VS40 smart cameras.",
+            "Tuned lighting and image processing to improve accuracy in identifying scratches and bent pins on production lines."
+          ]
+        },
+        {
+          title: "ICT Pre-Sales Engneer Intern",
+          subtitle: "TERA , Egypt",
+          date: "December 2025 – Present",
+          details: [
+            "Developing a document-processing system that scans engineering drawings, detects and counts system symbols, and automatically generates a Project Design Matrix (PDM).",
+            "Assisted in ICT and AV system technical documentation including PDMs and POQs for project proposals."
+          ]
+        }
+      ]
     },
     services: {
       title: "Services",
@@ -143,7 +175,7 @@ const translations = {
       rights: "© Astro-5444. All rights reserved"
     }
   },
-  
+
   // Arabic translations
   ar: {
     nav: {
@@ -187,7 +219,25 @@ const translations = {
       title: "المؤهلات",
       subtitle: "رحلتي المهنية",
       education: "التعليم",
-      work: "العمل"
+      work: "العمل",
+      educationList: [
+        {
+          title: "هندسة ميكاترونيكس (مرتبة الشرف)",
+          subtitle: "جامعة آسيا باسيفيك، ماليزيا",
+          date: "2021 - 2025"
+        }
+      ],
+      workList: [
+        {
+          title: "متدرب رؤية آلية",
+          subtitle: "Control Easy Technology Sdn. Bhd. ، ماليزيا",
+          date: "فبراير 2024 – يونيو 2024",
+          details: [
+            "تطوير نظام رؤية آلية في الوقت الفعلي للكشف عن عيوب وحدة التحكم الإلكترونية (ECU) باستخدام كاميرات Zebra VS40 الذكية.",
+            "ضبط الإضاءة ومعالجة الصور لتحسين الدقة في تحديد الخدوش والدبابيس المنحنية في خطوط الإنتاج."
+          ]
+        }
+      ]
     },
     services: {
       title: "الخدمات",
@@ -288,7 +338,7 @@ const translations = {
       rights: "© Astro-5444. جميع الحقوق محفوظة"
     }
   }
-  
+
 };
 
 // Current language state
@@ -303,11 +353,57 @@ const cvPaths = {
 
 
 
+// Helper to render qualification items
+function renderQualificationItems(items, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  items.forEach((item, index) => {
+    const dataDiv = document.createElement('div');
+    dataDiv.className = 'qualification__data';
+
+    let detailsHtml = '';
+    if (item.details && item.details.length > 0) {
+      detailsHtml = `<ul class="qualification__details">
+        ${item.details.map(detail => `<li>${detail}</li>`).join('')}
+      </ul>`;
+    }
+
+    const contentHtml = `
+      <div class="qualification__content-area">
+        <h3 class="qualification__title">${item.title}</h3>
+        <span class="qualification__subtitle">${item.subtitle}</span>
+        ${detailsHtml}
+        <div class="qualification__calendar">
+          <i class="uil uil-calendar-alt"></i>
+          ${item.date}
+        </div>
+      </div>
+    `;
+
+    const markerHtml = `
+      <div class="qualification__marker">
+        <span class="qualification__rounder"></span>
+        ${index === items.length - 1 ? "" : '<span class="qualification__line"></span>'}
+      </div>
+    `;
+
+    dataDiv.innerHTML = `
+      ${markerHtml}
+      ${contentHtml}
+    `;
+
+    container.appendChild(dataDiv);
+  });
+}
+
 // Translation function
 function translatePage(lang) {
   try {
     currentLang = lang;
-    
+
     // Update language button text FIRST (so it always updates even if translation fails)
     const langBtn = document.getElementById('lang-button');
     if (langBtn) {
@@ -317,200 +413,208 @@ function translatePage(lang) {
       // Also set as data attribute for debugging
       langBtn.setAttribute('data-lang', lang);
     }
-    
+
     const t = translations[lang];
-    
+
     if (!t) {
       console.error('Translation not found for language:', lang);
       return;
     }
-    
+
     // Update HTML language attribute but keep layout direction LTR
     document.documentElement.lang = lang;
-  
-  // Navigation
-  document.querySelector('a[href="#home"]').innerHTML = `<i class="uil uil-estate nav__icon"></i> ${t.nav.home}`;
-  document.querySelector('a[href="#about"]').innerHTML = `<i class="uil nav__icon uil-user"></i> ${t.nav.about}`;
-  document.querySelector('a[href="#skills"]').innerHTML = `<i class="uil nav__icon uil-file-alt"></i> ${t.nav.skills}`;
-  document.querySelector('a[href="#services"]').innerHTML = `<i class="uil nav__icon uil-briefcase-alt"></i> ${t.nav.services}`;
-  document.querySelector('a[href="#projects"]').innerHTML = `<i class="uil nav__icon uil-scenery"></i> ${t.nav.projects}`;
-  document.querySelector('a[href="#contact"]').innerHTML = `<i class="uil nav__icon uil-message"></i> ${t.nav.contact}`;
-  
-  // Home section
-  document.querySelector('.home__title').textContent = t.home.title;
-  document.querySelector('.home__subtitle').textContent = t.home.subtitle;
-  document.querySelector('.home__description').textContent = t.home.description;
-  document.querySelector('.home__data .button').innerHTML = `${t.home.contactBtn} <i class="uil uil-message button__icon"></i>`;
-  document.querySelector('.home__scroll-name').textContent = t.home.scrollDown;
-  
-  // About section
-  document.querySelector('#about .section__title').textContent = t.about.title;
-  document.querySelector('#about .section__subtitle').textContent = t.about.subtitle;
-  document.querySelector('.about__description').textContent = t.about.description;
-  
-  const aboutInfoNames = document.querySelectorAll('.about__info-name');
-  aboutInfoNames[0].innerHTML = t.about.internship;
-  aboutInfoNames[1].innerHTML = t.about.projects;
-  aboutInfoNames[2].innerHTML = t.about.companies;
-  
-  const aboutButtons = document.querySelectorAll('.about__buttons .button');
-  aboutButtons[0].innerHTML = `${t.about.cvBtn} <i class="uil uil-download-alt button__icon"></i>`;
-  aboutButtons[0].href = cvPaths[lang];
-  aboutButtons[1].innerHTML = `${t.about.completionBtn} <i class="uil uil-download-alt button__icon"></i>`;
-  
-  // Skills section
-  document.querySelector('#skills .section__title').textContent = t.skills.title;
-  document.querySelector('#skills .section__subtitle').textContent = t.skills.subtitle;
-  
-  const skillsTitles = document.querySelectorAll('.skills__title');
-  const skillsSubtitles = document.querySelectorAll('.skills__subtitle');
-  skillsTitles[0].textContent = t.skills.programming;
-  skillsSubtitles[0].textContent = t.skills.programmingSub;
-  skillsTitles[1].textContent = t.skills.automation;
-  skillsSubtitles[1].textContent = t.skills.automationSub;
-  skillsTitles[2].textContent = t.skills.design;
-  skillsSubtitles[2].textContent = t.skills.designSub;
-  skillsTitles[3].textContent = t.skills.microsoft;
-  skillsSubtitles[3].textContent = t.skills.microsoftSub;
-  
 
-  // Qualification section
-  document.querySelector('.qualification.section .section__title').textContent = t.qualification.title;
-  document.querySelector('.qualification.section .section__subtitle').textContent = t.qualification.subtitle;
-  document.querySelectorAll('.qualification__button')[0].innerHTML = `<i class="uil uil-graduation-cap qualification__icon"></i> ${t.qualification.education}`;
-  document.querySelectorAll('.qualification__button')[1].innerHTML = `<i class="uil uil-briefcase-alt qualification__icon"></i> ${t.qualification.work}`;
-  
-  // ================= SERVICES =================
-  document.querySelector('#services .section__title').textContent = t.services.title;
-  document.querySelector('#services .section__subtitle').textContent = t.services.subtitle;
+    // Navigation
+    document.querySelector('a[href="#home"]').innerHTML = `<i class="uil uil-estate nav__icon"></i> ${t.nav.home}`;
+    document.querySelector('a[href="#about"]').innerHTML = `<i class="uil nav__icon uil-user"></i> ${t.nav.about}`;
+    document.querySelector('a[href="#skills"]').innerHTML = `<i class="uil nav__icon uil-file-alt"></i> ${t.nav.skills}`;
+    document.querySelector('a[href="#services"]').innerHTML = `<i class="uil nav__icon uil-briefcase-alt"></i> ${t.nav.services}`;
+    document.querySelector('a[href="#projects"]').innerHTML = `<i class="uil nav__icon uil-scenery"></i> ${t.nav.projects}`;
+    document.querySelector('a[href="#contact"]').innerHTML = `<i class="uil nav__icon uil-message"></i> ${t.nav.contact}`;
 
-  const serviceTitles = document.querySelectorAll('.services__title');
-  if (serviceTitles[0] && t.services.s1) serviceTitles[0].innerHTML = t.services.s1.title;
-  if (serviceTitles[1] && t.services.s2) serviceTitles[1].innerHTML = t.services.s2.title;
-  if (serviceTitles[2] && t.services.s3) serviceTitles[2].innerHTML = t.services.s3.title;
+    // Home section
+    document.querySelector('.home__title').textContent = t.home.title;
+    document.querySelector('.home__subtitle').textContent = t.home.subtitle;
+    document.querySelector('.home__description').textContent = t.home.description;
+    document.querySelector('.home__data .button').innerHTML = `${t.home.contactBtn} <i class="uil uil-message button__icon"></i>`;
+    document.querySelector('.home__scroll-name').textContent = t.home.scrollDown;
 
-  const serviceButtons = document.querySelectorAll('.services__button');
-  serviceButtons.forEach(btn => {
-    if (btn.childNodes[0] && t.services.viewMore) {
-      btn.childNodes[0].textContent = t.services.viewMore + " ";
+    // About section
+    document.querySelector('#about .section__title').textContent = t.about.title;
+    document.querySelector('#about .section__subtitle').textContent = t.about.subtitle;
+    document.querySelector('.about__description').textContent = t.about.description;
+
+    const aboutInfoNames = document.querySelectorAll('.about__info-name');
+    aboutInfoNames[0].innerHTML = t.about.internship;
+    aboutInfoNames[1].innerHTML = t.about.projects;
+    aboutInfoNames[2].innerHTML = t.about.companies;
+
+    const aboutButtons = document.querySelectorAll('.about__buttons .button');
+    aboutButtons[0].innerHTML = `${t.about.cvBtn} <i class="uil uil-download-alt button__icon"></i>`;
+    aboutButtons[0].href = cvPaths[lang];
+    aboutButtons[1].innerHTML = `${t.about.completionBtn} <i class="uil uil-download-alt button__icon"></i>`;
+
+    // Skills section
+    document.querySelector('#skills .section__title').textContent = t.skills.title;
+    document.querySelector('#skills .section__subtitle').textContent = t.skills.subtitle;
+
+    const skillsTitles = document.querySelectorAll('.skills__title');
+    const skillsSubtitles = document.querySelectorAll('.skills__subtitle');
+    skillsTitles[0].textContent = t.skills.programming;
+    skillsSubtitles[0].textContent = t.skills.programmingSub;
+    skillsTitles[1].textContent = t.skills.automation;
+    skillsSubtitles[1].textContent = t.skills.automationSub;
+    skillsTitles[2].textContent = t.skills.design;
+    skillsSubtitles[2].textContent = t.skills.designSub;
+    skillsTitles[3].textContent = t.skills.microsoft;
+    skillsSubtitles[3].textContent = t.skills.microsoftSub;
+
+
+    // Qualification section
+    document.querySelector('.qualification.section .section__title').textContent = t.qualification.title;
+    document.querySelector('.qualification.section .section__subtitle').textContent = t.qualification.subtitle;
+    document.querySelectorAll('.qualification__button')[0].innerHTML = `<i class="uil uil-graduation-cap qualification__icon"></i> ${t.qualification.education}`;
+    document.querySelectorAll('.qualification__button')[1].innerHTML = `<i class="uil uil-briefcase-alt qualification__icon"></i> ${t.qualification.work}`;
+
+    if (t.qualification.educationList) {
+      renderQualificationItems(t.qualification.educationList, 'education');
     }
-  });
+    if (t.qualification.workList) {
+      renderQualificationItems(t.qualification.workList, 'work');
+    }
 
-  const modalTitles = document.querySelectorAll('.services__modal-title');
-  if (modalTitles[0] && t.services.s1) modalTitles[0].innerHTML = t.services.s1.title;
-  if (modalTitles[1] && t.services.s2) modalTitles[1].innerHTML = t.services.s2.title;
-  if (modalTitles[2] && t.services.s3) modalTitles[2].innerHTML = t.services.s3.title;
+    // ================= SERVICES =================
+    document.querySelector('#services .section__title').textContent = t.services.title;
+    document.querySelector('#services .section__subtitle').textContent = t.services.subtitle;
 
-  const modalItems = document.querySelectorAll('.services__modal-service p');
-  if (modalItems[0] && t.services.s1 && t.services.s1.items && t.services.s1.items[0]) modalItems[0].textContent = t.services.s1.items[0];
-  if (modalItems[1] && t.services.s1 && t.services.s1.items && t.services.s1.items[1]) modalItems[1].textContent = t.services.s1.items[1];
-  if (modalItems[2] && t.services.s1 && t.services.s1.items && t.services.s1.items[2]) modalItems[2].textContent = t.services.s1.items[2];
-  if (modalItems[3] && t.services.s1 && t.services.s1.items && t.services.s1.items[3]) modalItems[3].textContent = t.services.s1.items[3];
+    const serviceTitles = document.querySelectorAll('.services__title');
+    if (serviceTitles[0] && t.services.s1) serviceTitles[0].innerHTML = t.services.s1.title;
+    if (serviceTitles[1] && t.services.s2) serviceTitles[1].innerHTML = t.services.s2.title;
+    if (serviceTitles[2] && t.services.s3) serviceTitles[2].innerHTML = t.services.s3.title;
 
-  if (modalItems[4] && t.services.s2 && t.services.s2.items && t.services.s2.items[0]) modalItems[4].textContent = t.services.s2.items[0];
-  if (modalItems[5] && t.services.s2 && t.services.s2.items && t.services.s2.items[1]) modalItems[5].textContent = t.services.s2.items[1];
-  if (modalItems[6] && t.services.s2 && t.services.s2.items && t.services.s2.items[2]) modalItems[6].textContent = t.services.s2.items[2];
-  if (modalItems[7] && t.services.s2 && t.services.s2.items && t.services.s2.items[3]) modalItems[7].textContent = t.services.s2.items[3];
-
-  if (modalItems[8] && t.services.s3 && t.services.s3.items && t.services.s3.items[0]) modalItems[8].textContent = t.services.s3.items[0];
-  if (modalItems[9] && t.services.s3 && t.services.s3.items && t.services.s3.items[1]) modalItems[9].textContent = t.services.s3.items[1];
-  if (modalItems[10] && t.services.s3 && t.services.s3.items && t.services.s3.items[2]) modalItems[10].textContent = t.services.s3.items[2];
-  if (modalItems[11] && t.services.s3 && t.services.s3.items && t.services.s3.items[3]) modalItems[11].textContent = t.services.s3.items[3];
-
-  
-  // ================= PROJECTS =================
-  document.querySelector('#projects .section__title').textContent = t.projects.title;
-  document.querySelector('#projects .section__subtitle').textContent = t.projects.subtitle;
-
-  // Update projects by matching data-i18n attributes or by index
-  // This ensures we update all slides including Swiper duplicates
-  if (t.projects.cards) {
-    // Get all project titles to identify which project each slide represents
-    const allProjectTitles = document.querySelectorAll('.portfolio__title');
-    
-    allProjectTitles.forEach((titleEl) => {
-      // Try to get the data-i18n attribute to identify the project index
-      const dataI18n = titleEl.getAttribute('data-i18n');
-      let projectIndex = -1;
-      
-      if (dataI18n) {
-        // Extract index from data-i18n like "projects.cards.0.title"
-        const match = dataI18n.match(/projects\.cards\.(\d+)\.title/);
-        if (match) {
-          projectIndex = parseInt(match[1], 10);
-        }
+    const serviceButtons = document.querySelectorAll('.services__button');
+    serviceButtons.forEach(btn => {
+      const i18nSpan = btn.querySelector('[data-i18n="services.button"]');
+      if (i18nSpan && t.services.viewMore) {
+        i18nSpan.textContent = t.services.viewMore;
       }
-      
-      // If we couldn't get index from data-i18n, try to find it by parent slide position
-      if (projectIndex === -1) {
-        const slide = titleEl.closest('.portfolio__content');
-        if (slide) {
-          const swiperWrapper = slide.closest('.swiper-wrapper');
-          if (swiperWrapper) {
-            const allSlides = swiperWrapper.querySelectorAll('.portfolio__content');
-            const slideIndex = Array.from(allSlides).indexOf(slide);
-            // Swiper duplicates slides, so we need to find the original index
-            // Original slides are typically in positions 0-7, duplicates come after
-            projectIndex = slideIndex % 8;
+    });
+
+    const modalTitles = document.querySelectorAll('.services__modal-title');
+    if (modalTitles[0] && t.services.s1) modalTitles[0].innerHTML = t.services.s1.title;
+    if (modalTitles[1] && t.services.s2) modalTitles[1].innerHTML = t.services.s2.title;
+    if (modalTitles[2] && t.services.s3) modalTitles[2].innerHTML = t.services.s3.title;
+
+    const modalItems = document.querySelectorAll('.services__modal-service p');
+    if (modalItems[0] && t.services.s1 && t.services.s1.items && t.services.s1.items[0]) modalItems[0].textContent = t.services.s1.items[0];
+    if (modalItems[1] && t.services.s1 && t.services.s1.items && t.services.s1.items[1]) modalItems[1].textContent = t.services.s1.items[1];
+    if (modalItems[2] && t.services.s1 && t.services.s1.items && t.services.s1.items[2]) modalItems[2].textContent = t.services.s1.items[2];
+    if (modalItems[3] && t.services.s1 && t.services.s1.items && t.services.s1.items[3]) modalItems[3].textContent = t.services.s1.items[3];
+
+    if (modalItems[4] && t.services.s2 && t.services.s2.items && t.services.s2.items[0]) modalItems[4].textContent = t.services.s2.items[0];
+    if (modalItems[5] && t.services.s2 && t.services.s2.items && t.services.s2.items[1]) modalItems[5].textContent = t.services.s2.items[1];
+    if (modalItems[6] && t.services.s2 && t.services.s2.items && t.services.s2.items[2]) modalItems[6].textContent = t.services.s2.items[2];
+    if (modalItems[7] && t.services.s2 && t.services.s2.items && t.services.s2.items[3]) modalItems[7].textContent = t.services.s2.items[3];
+
+    if (modalItems[8] && t.services.s3 && t.services.s3.items && t.services.s3.items[0]) modalItems[8].textContent = t.services.s3.items[0];
+    if (modalItems[9] && t.services.s3 && t.services.s3.items && t.services.s3.items[1]) modalItems[9].textContent = t.services.s3.items[1];
+    if (modalItems[10] && t.services.s3 && t.services.s3.items && t.services.s3.items[2]) modalItems[10].textContent = t.services.s3.items[2];
+    if (modalItems[11] && t.services.s3 && t.services.s3.items && t.services.s3.items[3]) modalItems[11].textContent = t.services.s3.items[3];
+
+
+    // ================= PROJECTS =================
+    document.querySelector('#projects .section__title').textContent = t.projects.title;
+    document.querySelector('#projects .section__subtitle').textContent = t.projects.subtitle;
+
+    // Update projects by matching data-i18n attributes or by index
+    // This ensures we update all slides including Swiper duplicates
+    if (t.projects.cards) {
+      // Get all project titles to identify which project each slide represents
+      const allProjectTitles = document.querySelectorAll('.portfolio__title');
+
+      allProjectTitles.forEach((titleEl) => {
+        // Try to get the data-i18n attribute to identify the project index
+        const dataI18n = titleEl.getAttribute('data-i18n');
+        let projectIndex = -1;
+
+        if (dataI18n) {
+          // Extract index from data-i18n like "projects.cards.0.title"
+          const match = dataI18n.match(/projects\.cards\.(\d+)\.title/);
+          if (match) {
+            projectIndex = parseInt(match[1], 10);
           }
         }
-      }
-      
-      // Update this slide if we found a valid project index
-      if (projectIndex >= 0 && projectIndex < t.projects.cards.length) {
-        const card = t.projects.cards[projectIndex];
-        const slide = titleEl.closest('.portfolio__content');
-        
-        if (slide && card) {
-          // Update title
-          titleEl.textContent = card.title;
-          
-          // Update description
-          const descEl = slide.querySelector('.portfolio__description');
-          if (descEl) {
-            descEl.textContent = card.desc;
-          }
-          
-          // Update button
-          const buttonEl = slide.querySelector('.portfolio__button');
-          if (buttonEl) {
-            const buttonSpan = buttonEl.querySelector('span');
-            if (buttonSpan && card.button) {
-              buttonSpan.textContent = card.button;
+
+        // If we couldn't get index from data-i18n, try to find it by parent slide position
+        if (projectIndex === -1) {
+          const slide = titleEl.closest('.portfolio__content');
+          if (slide) {
+            const swiperWrapper = slide.closest('.swiper-wrapper');
+            if (swiperWrapper) {
+              const allSlides = swiperWrapper.querySelectorAll('.portfolio__content');
+              const slideIndex = Array.from(allSlides).indexOf(slide);
+              // Swiper duplicates slides, so we need to find the original index
+              // Original slides are typically in positions 0-7, duplicates come after
+              projectIndex = slideIndex % 8;
             }
           }
         }
-      }
-    });
-  }
-  
-  // Contact section
-  document.querySelector('#contact .section__title').textContent = t.contact.title;
-  document.querySelector('#contact .section__subtitle').textContent = t.contact.subtitle;
-  
-  const contactTitles = document.querySelectorAll('.contact__title');
-  contactTitles[0].textContent = t.contact.call;
-  contactTitles[1].textContent = t.contact.email;
-  contactTitles[2].textContent = t.contact.location;
-  
-  const contactLabels = document.querySelectorAll('.contact__label');
-  contactLabels[0].textContent = t.contact.name;
-  contactLabels[1].textContent = t.contact.email;
-  contactLabels[2].textContent = t.contact.project;
-  contactLabels[3].textContent = t.contact.message;
-  
-  document.querySelector('.contact__form button').innerHTML = `${t.contact.send} <i class="uil uil-message button__icon"></i>`;
-  
-  // Footer
-  document.querySelector('.footer__subtitle').textContent = t.footer.subtitle;
-  const footerLinks = document.querySelectorAll('.footer__link');
-  footerLinks[0].textContent = t.footer.services;
-  footerLinks[1].textContent = t.footer.projects;
-  footerLinks[2].textContent = t.footer.contact;
-  document.querySelector('.footer__copy').textContent = t.footer.rights;
-  
-  // Save preference
-  localStorage.setItem('preferredLanguage', lang);
+
+        // Update this slide if we found a valid project index
+        if (projectIndex >= 0 && projectIndex < t.projects.cards.length) {
+          const card = t.projects.cards[projectIndex];
+          const slide = titleEl.closest('.portfolio__content');
+
+          if (slide && card) {
+            // Update title
+            titleEl.textContent = card.title;
+
+            // Update description
+            const descEl = slide.querySelector('.portfolio__description');
+            if (descEl) {
+              descEl.textContent = card.desc;
+            }
+
+            // Update button
+            const buttonEl = slide.querySelector('.portfolio__button');
+            if (buttonEl) {
+              const buttonSpan = buttonEl.querySelector('span');
+              if (buttonSpan && card.button) {
+                buttonSpan.textContent = card.button;
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Contact section
+    document.querySelector('#contact .section__title').textContent = t.contact.title;
+    document.querySelector('#contact .section__subtitle').textContent = t.contact.subtitle;
+
+    const contactTitles = document.querySelectorAll('.contact__title');
+    contactTitles[0].textContent = t.contact.call;
+    contactTitles[1].textContent = t.contact.email;
+    contactTitles[2].textContent = t.contact.location;
+
+    const contactLabels = document.querySelectorAll('.contact__label');
+    contactLabels[0].textContent = t.contact.name;
+    contactLabels[1].textContent = t.contact.email;
+    contactLabels[2].textContent = t.contact.project;
+    contactLabels[3].textContent = t.contact.message;
+
+    document.querySelector('.contact__form button').innerHTML = `${t.contact.send} <i class="uil uil-message button__icon"></i>`;
+
+    // Footer
+    document.querySelector('.footer__subtitle').textContent = t.footer.subtitle;
+    const footerLinks = document.querySelectorAll('.footer__link');
+    footerLinks[0].textContent = t.footer.services;
+    footerLinks[1].textContent = t.footer.projects;
+    footerLinks[2].textContent = t.footer.contact;
+    document.querySelector('.footer__copy').textContent = t.footer.rights;
+
+    // Save preference
+    localStorage.setItem('preferredLanguage', lang);
   } catch (error) {
     console.error('Error in translatePage:', error);
   }
@@ -535,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Switching from', currentLang, 'to', newLang); // Debug log
       translatePage(newLang);
     };
-    
+
     // Remove old listener and add new one
     langBtn.removeEventListener('click', newClickHandler);
     langBtn.addEventListener('click', newClickHandler);
