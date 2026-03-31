@@ -49,7 +49,7 @@ const translations = {
           subtitle: "Asia Pacific University, Malaysia",
           date: "2021 - 2025"
         },
-                {
+        {
           title: "Master Of Mechatronics Engineering",
           subtitle: "De Montfort University, Completed through a collaborative programme with Asia Pacific University",
           date: "2021 - 2025"
@@ -70,7 +70,7 @@ const translations = {
           subtitle: "TERA , Egypt",
           date: "December 2025 – Present",
           details: [
-            "Developing a document-processing system that scans engineering drawings, detects and counts system symbols, and automatically generates a Project Design Matrix (PDM).",
+            "Developing a document-processing system that scans engineering drawings, detects and counts system symbols, and automatically generates a Product Data Management(PDM).",
             "Assisted in ICT and AV system technical documentation including PDMs and POQs for project proposals."
           ]
         }

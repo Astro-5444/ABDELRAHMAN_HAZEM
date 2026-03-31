@@ -133,6 +133,7 @@ body.dark-theme {
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -143,6 +144,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
 }
 
 /* On mobile (bottom nav), give the body more bottom spacing so footer is not hidden */
@@ -199,14 +201,20 @@ img { max-width: 100%; height: auto; }
 /*==================== LAYOUT ====================*/
 .container {
     max-width: 800px;
-    margin-left: var(--mb-1-5);
-    margin-right: var(--mb-1-5);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
 }
 
 .grid {
     display: grid;
     gap: 1.5rem;
 }
+
+/* Prevent grid items from overflowing their column */
+.grid > * { min-width: 0; }
 
 /*==================== HEADER / NAV ====================*/
 .header {
@@ -257,7 +265,7 @@ img { max-width: 100%; height: auto; }
 @media screen and (max-width: 767px) {
     .nav__menu {
         position: fixed;
-        bottom: -100%;
+        bottom: -100vh;
         left: 0;
         width: 100%;
         background: var(--glass-bg);
@@ -309,7 +317,7 @@ img { max-width: 100%; height: auto; }
     transform: rotate(90deg);
 }
 
-.show-menu { bottom: 0; }
+.nav__menu.show-menu { bottom: 0 !important; }
 
 .active-link {
     color: var(--first-color);
@@ -429,10 +437,11 @@ img { max-width: 100%; height: auto; }
 }
 
 .home__blob {
-    width: 200px;
+    /* Fluid size interpolation from 150px up to 340px based on viewport width */
+    width: clamp(150px, 20vw + 6rem, 340px);
     fill: var(--first-color);
     filter: drop-shadow(0 8px 24px hsla(213, 80%, 42%, 0.3));
-    animation: float 6s ease-in-out infinite;
+    /* animation: float 6s ease-in-out infinite; removed to keep it fixed */
 }
 
 @keyframes float {
@@ -660,9 +669,9 @@ img { max-width: 100%; height: auto; }
     flex-wrap: wrap;
 }
 
-/* CV button - align icon to far left */
+/* CV button - align text to center */
 .about__buttons .button:first-child {
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 /*==================== SKILLS ====================*/
@@ -939,6 +948,8 @@ img { max-width: 100%; height: auto; }
     font-size: var(--normal-font-size);
     position: relative;
     padding-left: 1.25rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .qualification__details li::before {
@@ -1149,7 +1160,8 @@ img { max-width: 100%; height: auto; }
 }
 
 .portfolio__img {
-    width: 280px;
+    width: clamp(200px, 70vw, 280px);
+    max-width: 100%;
     border-radius: var(--radius-lg);
     justify-self: center;
     box-shadow: var(--card-shadow);
@@ -1264,6 +1276,8 @@ img { max-width: 100%; height: auto; }
 .contact__subtitle {
     font-size: var(--small-font-size);
     color: var(--text-color-light);
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .contact__content {
@@ -1307,9 +1321,10 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer__title {
-    font-size: var(--h1-font-size);
+    font-size: clamp(1.1rem, 4vw, var(--h1-font-size));
     margin-bottom: var(--mb-0-25);
     color: #fff;
+    word-break: break-word;
 }
 
 .footer__subtitle { font-size: var(--small-font-size); }
@@ -1409,37 +1424,37 @@ img { max-width: 100%; height: auto; }
 /* For small devices */
 @media screen and (max-width: 350px) {
     .container {
-        margin-left: var(--mb-1);
-        margin-right: var(--mb-1);
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
     }
 
     .nav__menu { padding: 2rem 0.25rem 4rem; }
     .nav__list { column-gap: 0; }
-    .home__content { grid-template-columns: 0.25fr 3fr; }
-    .home__blob { width: 180px; }
+
+    /* Keep as single column — the 2-col layout breaks on tiny phones */
+    .home__content { grid-template-columns: 1fr; }
 
     .skills__title { font-size: var(--normal-font-size); }
 
     .qualification__data { gap: 0.5rem; }
 
     .services__container {
-        grid-template-columns: max-content;
+        grid-template-columns: 1fr;
         justify-content: center;
     }
 
-    .services__content { padding-right: 3.5rem; }
+    .services__content { padding: 2rem 1rem 1.5rem; }
     .services__modal { padding: 0rem 0.5rem; }
     .project__img { width: 200px; }
 }
 
-/* For medium devices */
+/* For medium devices — tablet portrait range (568px-767px) */
 @media screen and (min-width: 568px) {
     .home__content { grid-template-columns: max-content 1fr 1fr; }
     .home__data { grid-column: initial; }
     .home__img { order: 1; justify-self: center; }
 
     .about__container,
-    .skills__container,
     .portfolio__content,
     .project__container,
     .contact__container,
@@ -1447,11 +1462,19 @@ img { max-width: 100%; height: auto; }
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Skills stays single column until desktop — it's dense content */
+    .skills__container {
+        grid-template-columns: 1fr;
+    }
+
     .qualification__sections {
         display: grid;
         grid-template-columns: 0.6fr;
         justify-content: center;
     }
+
+    /* About image sizing for tablet */
+    .about__img { width: clamp(180px, 35vw, 280px); }
 }
 
 @media screen and (min-width: 768px) {
@@ -1516,7 +1539,6 @@ img { max-width: 100%; height: auto; }
         column-gap: 2rem;
     }
 
-    .home__blob { width: 270px; }
     .home__scroll { display: block; }
     .home__scroll-button { margin-left: 3rem; }
 
@@ -1573,7 +1595,6 @@ img { max-width: 100%; height: auto; }
     .main,
     .footer__container { padding: 0; }
 
-    .home__blob { width: 340px; }
     .home__social { transform: translateX(-6rem); }
 
     .services__container { grid-template-columns: repeat(3, 250px); }
@@ -1692,10 +1713,11 @@ img { max-width: 100%; height: auto; }
 .change-language:hover { color: var(--first-color); }
 
 .organized-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.75rem;
-    max-width: 500px;
+    max-width: 100%;
 }
 
 /*==================== SKILL BADGE TAGS (New Style) ====================*/
@@ -1843,8 +1865,10 @@ img { max-width: 100%; height: auto; }
 @media screen and (max-width: 767px) {
     .container {
         max-width: 100%;
-        margin-left: 1rem;
-        margin-right: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: 0;
+        margin-right: 0;
     }
 
     /* ---- HOME ---- */
@@ -1873,12 +1897,6 @@ img { max-width: 100%; height: auto; }
     .home__img {
         order: 1;
     }
-
-    .home__blob {
-        width: 180px;
-    }
-
-    .home__blob-img { width: 150px; }
 
     .home__data {
         grid-column: initial;
@@ -1925,7 +1943,6 @@ img { max-width: 100%; height: auto; }
     }
 
     .organized-buttons {
-        grid-template-columns: repeat(2, 1fr);
         max-width: 100%;
         gap: 0.6rem;
     }
@@ -1979,7 +1996,8 @@ img { max-width: 100%; height: auto; }
     }
 
     .portfolio__img {
-        width: min(280px, 80vw);
+        width: min(280px, 78vw);
+        max-width: 100%;
     }
 
     .portfolio__data { text-align: left; }
@@ -2047,13 +2065,10 @@ img { max-width: 100%; height: auto; }
         --h3-font-size: 1rem;
     }
 
-    .home__blob { width: 150px; }
-    .home__blob-img { width: 125px; }
-
     .about__info > div { flex: 0 0 calc(50% - 0.75rem); }
 
     .organized-buttons {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 
     .nav__logo {
