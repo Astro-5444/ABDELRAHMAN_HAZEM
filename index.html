@@ -1,926 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Google Analytics (Placeholder Version) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CD5BESM6XZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-CD5BESM6XZ');
-  </script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Abdelrhman Hazem Khalil — Mechatronics Engineer graduated specializing in machine vision, robotics, and automation. Explore my projects, skills, and experience.">
-  <meta name="keywords" content="Abdelrhman Hazem, Mechatronics Engineer, Machine Vision, Robotics, ROS2, Python, OpenCV, Portfolio">
-  <meta name="author" content="Abdelrhman Hazem Khalil">
-  <meta property="og:title" content="Abdelrhman Hazem Khalil | Mechatronics Engineer Portfolio">
-  <meta property="og:description" content="Mechatronics Engineer specializing in machine vision, robotics, and automation systems.">
-  <meta property="og:type" content="website">
-
-  <!--==================== UNICONS ====================-->
-  <link rel="stylesheet" href="css/line.css">
-  <!--==================== SWIPER CSS ====================-->
-  <link rel="stylesheet" href="css/swiper-bundle.min.css">
-
-  <!--==================== CSS ====================-->
-  <link rel="stylesheet" href="css/styles.css">
-
-  <!-- Favicon Logo -->
-  <link rel="icon" href="images/logo.png" type="image/png">
-
-  <title data-i18n="meta.title">Abdelrhman Hazem Khalil | Portfolio</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abdelrhman Hazem Khalil — Mechatronics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@1,500;1,700;1,900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
 </head>
-
 <body>
-  <!-- Page Loader -->
-  <div class="page-loader" id="page-loader">
-    <div class="loader-ring"></div>
+
+<!-- Loading screen (kinetic typography) -->
+<div class="ld-loader" id="loader" aria-hidden="true">
+  <div class="ld-word" id="loaderWord"></div>
+  <div class="ld-caption" id="loaderCaption">Mechatronics Engineer</div>
+</div>
+<noscript><style>.ld-loader{display:none;}</style></noscript>
+
+<!-- Nav -->
+<nav class="nav">
+  <span class="nav-logo">A.H. Khalil <span class="nav-tagline"></span></span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Education</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <span class="theme-icon">☀</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+
+  <!-- Left: intro text -->
+  <div class="hero-left">
+    <p class="hero-eyebrow">Mechatronics Engineer</p>
+    <div class="hero-title-wrapper">
+      <div class="hero-text-block">
+        <h1 class="hero-h1"><em>Abdelrhman</em><br/><em>Hazem Khalil</em></h1>
+      </div>
+      <img src="images/perfil.png" alt="Abdelrhman" class="hero-profile-pic" />
+    </div>
+    <p class="hero-desc">
+      Building vision systems that catch what humans miss,<br/>
+      robots that listen, and automation that actually ships.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Contact Me</a>
+      <a href="#projects" class="btn-ghost">View Projects</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-n">2</span><span class="hero-stat-l">Internships</span></div>
+      <div class="hero-stat"><span class="hero-stat-n">8</span><span class="hero-stat-l">Projects</span></div>
+      <div class="hero-stat"><span class="hero-stat-n">2</span><span class="hero-stat-l">Companies</span></div>
+    </div>
   </div>
 
-  <!--==================== HEADER ====================-->
-  <header class="header" id="header">
-    <nav class="nav container">
-      <a href="#" class="nav__logo" data-i18n="header.logo">Abdelrhman Hazem</a>
+  <!-- Right: THE PAPER — 3D Roll-Down CV reveal -->
+  <div class="hero-right" id="heroRight">
+    <div id="paperSpring">
+      <a href="assets/pdf/Abdelrhman-CV-EN.pdf" download class="paper rolled" id="paperFold">
+        <div class="roll-content">
+          <img class="roll-img" src="images/cv.jpg" alt="CV preview" />
+          <div class="roll-texture"></div>
+          <div class="roll-shine"></div>
+          <div class="holographic-sheen"></div>
+          <div class="roll-band"></div>
+        </div>
+        <div class="roll-edge"></div>
+        <div class="roll-cylinder"></div>
+        <div class="cv-dl-hint">Download CV &darr;</div>
+      </a>
+    </div>
+  </div>
 
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list grid">
-          <li class="nav__item">
-            <a href="#home" class="nav__link active-link">
-              <i class="uil uil-estate nav__icon"></i> <span data-i18n="header.nav.home">Home</span>
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#about" class="nav__link">
-              <i class="uil nav__icon uil-user"></i> <span data-i18n="header.nav.about">About</span>
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#skills" class="nav__link">
-              <i class="uil nav__icon uil-file-alt"></i> <span data-i18n="header.nav.skills">Skills</span>
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#services" class="nav__link">
-              <i class="uil nav__icon uil-briefcase-alt"></i> <span data-i18n="header.nav.services">Services</span>
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#projects" class="nav__link">
-              <i class="uil nav__icon uil-scenery"></i> <span data-i18n="header.nav.projects">Projects</span>
-            </a>
-          </li>
-          <li class="nav__item">
-            <a href="#contact" class="nav__link">
-              <i class="uil nav__icon uil-message"></i> <span data-i18n="header.nav.contact">Contact</span>
-            </a>
-          </li>
-        </ul>
-        <i class="uil uil-times nav__close" id="nav-close"></i>
-      </div>
+</section>
 
-      <div class="nav__btns">
-        <!-- Theme change button -->
-        <i class="uil uil-moon change-theme" id="theme-button" title="Toggle dark mode"></i>
+<!-- Dark to paper bridge -->
+<div class="fold-bridge"></div>
 
-        <div class="nav__toggle" id="nav-toggle">
-          <i class="uil uil-apps"></i>
+<!-- ABOUT -->
+<section id="about" class="paper-section">
+  <div class="psi">
+    <p class="ps-label reveal">The short version</p>
+    <h2 class="ps-h2 reveal d1">About <em>Me</em></h2>
+    <div class="about-grid">
+      <div class="reveal d1">
+        <p class="about-desc">
+          I got into mechatronics engineering to build systems that perceive, decide, and act, bridging the gap between software and the physical world.
+          <br/><br/>
+          At Control Easy in Malaysia, I developed machine vision inspection systems for a production environment. I designed and deployed a scratch detection system from concept through final assembly, iterating on both hardware and software to achieve reliable defect identification. When my initial pin-measurement approach did not fully meet requirements, I redesigned the system to incorporate inter-pin distance measurement, delivering an approved solution. I also developed C# interfaces for real-time camera control and data processing, and engineered a universal camera mounting system through multiple 3D-printing iterations.
+          <br/><br/>
+          At AVIS in Egypt, I worked as an ICT Draftsman, reviewing network infrastructure drawings for hotels, hospitals, and mixed-use developments. My tasks included counting network elements, checking layouts, and tracing single-line diagrams to identify rack connections. Beyond my core responsibilities, I developed an AI-powered symbol counting tool using Vision-Language Models and automated detection techniques to accelerate drafting workflows. I also prototyped an application for automated single-line diagram generation, receiving positive feedback from the engineering team as a potential productivity tool.
+          <br/><br/>
+          2 internships. 2 countries. 2 disciplines. Still learning. Still building.
+        </p>
+        <div style="display:flex;gap:1.2rem;margin-top:2.8rem;">
+          <a download href="assets/pdf/Abdelrhman-CV-EN.pdf" class="btn-gold">Download CV</a>
+          <a download href="assets/pdf/Completion_letter.pdf" class="btn-ink">Completion Letter</a>
         </div>
       </div>
-    </nav>
-  </header>
-
-  <!--==================== MAIN ====================-->
-  <main class="main">
-    <!--==================== HOME ====================-->
-    <section class="home section" id="home">
-      <div class="home__container container grid">
-        <div class="home__content grid">
-          <div class="home__social">
-            <a href="https://eg.linkedin.com/in/abdulrhman-khalil-04361a2b7" target="_blank" class="footer__social" title="LinkedIn" aria-label="LinkedIn Profile">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 22px; height: 22px;">
-            </a>
-            <a href="https://huggingface.co/Abdel2001" target="_blank" class="footer__social" title="Hugging Face" aria-label="Hugging Face Profile">
-              <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="width: 22px; height: 22px;">
-            </a>
-            <a href="https://github.com/Astro-5444" target="_blank" class="footer__social" title="GitHub" aria-label="GitHub Profile">
-              <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" style="width: 22px; height: 22px;">
-            </a>
-          </div>
-
-          <div class="home__img">
-            <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink">
-              <mask id="mask0" mask-type="alpha">
-                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547
-                              130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775
-                              97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666
-                              0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"></path>
-              </mask>
-              <g mask="url(#mask0)">
-                <path fill="var(--first-color)" d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346
-                         165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403
-                         129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028
-                         -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"></path>
-                <image class="home__blob-img" x="12" y="18" xlink:href="images/perfil.png"></image>
-              </g>
-            </svg>
-          </div>
-
-          <div class="home__data">
-            <h1 class="home__title" data-i18n="home.title">Hi, I'm Abdelrhman Hazem Khalil</h1>
-            <h3 class="home__subtitle" data-i18n="home.subtitle">Mechatronics Engineer</h3>
-            <p class="home__description" data-i18n="home.description">
-              I am a Mechatronics Engineer graduated from Asia Pacific University, Malaysia with hands-on experience in
-              machine vision, automation, and robotics. I have worked on real-time quality inspection systems and
-              developed advanced vision algorithms.
-            </p>
-            <a href="#contact" class="button button--flex" id="home-contact-btn">
-              <span data-i18n="home.button">Contact Me</span> <i class="uil uil-message button__icon"></i>
-            </a>
+      <div class="reveal d2" style="display:flex;flex-direction:column;gap:2rem;">
+        <img src="images/about.jpg" alt="Building something" class="about-img" onerror="this.style.display='none'" />
+        <div class="about-box">
+          <div class="about-box-title">Core Competencies</div>
+          <div class="comps">
+            <div class="comp">Machine Vision</div>
+            <div class="comp">ROS 2 Robotics</div>
+            <div class="comp">Embedded Systems</div>
+            <div class="comp">AI Integration</div>
+            <div class="comp">CAD / SolidWorks</div>
+            <div class="comp">PLC Programming</div>
           </div>
         </div>
-
-        <div class="home__scroll">
-          <a href="#about" class="home__scroll-button button--flex">
-            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-            <span class="home__scroll-name" data-i18n="home.scroll">Scroll down</span>
-            <i class="uil uil-arrow-down home__scroll-arrow"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!--==================== ABOUT ====================-->
-    <section class="about section" id="about">
-      <h2 class="section__title" data-i18n="about.title">About Me</h2>
-      <span class="section__subtitle" data-i18n="about.subtitle">My Introduction</span>
-
-      <div class="about__container container grid">
-        <img src="images/about.jpg" alt="Abdelrhman Hazem Khalil" class="about__img reveal-left">
-
-        <div class="about__data reveal-right">
-          <p class="about__description" data-i18n="about.description">
-            Mechatronics Engineering graduate from APU with 2 internship, 8 completed projects, and hands-on experience
-            in robotics, machine vision, and embedded systems. I've built AI-driven humanoid robots and defect detection
-            systems using Python, ROS 2, and ESP32. I focus on smart, efficient solutions that connect hardware with
-            intelligent software.
-          </p>
-          <div class="about__info">
-            <div>
-              <span class="about__info-title">2</span>
-              <span class="about__info-name" data-i18n="about.info.0.name">Internship <br> Experience</span>
-            </div>
-            <div>
-              <span class="about__info-title">8</span>
-              <span class="about__info-name" data-i18n="about.info.1.name">Projects <br> Completed</span>
-            </div>
-            <div>
-              <span class="about__info-title">2</span>
-              <span class="about__info-name" data-i18n="about.info.2.name">Company <br> Worked</span>
-            </div>
+        <div class="about-box">
+          <div class="about-box-title">Tools &amp; Technologies</div>
+          <div class="tag-cloud">
+            <span class="tc-tag">Python</span><span class="tc-tag">ROS 2</span>
+            <span class="tc-tag">OpenCV</span><span class="tc-tag">MediaPipe</span>
+            <span class="tc-tag">ESP32</span><span class="tc-tag">SolidWorks</span>
+            <span class="tc-tag">MATLAB</span><span class="tc-tag">Arduino</span>
+            <span class="tc-tag">Gazebo</span><span class="tc-tag">C/C++</span>
           </div>
-
-          <div class="about__buttons organized-buttons">
-            <a download href="assets/pdf/Abdelrhman-CV-EN.pdf" class="button button--flex">
-              <span data-i18n="about.button.cv">CV</span>
-              <i class="uil uil-download-alt button__icon"></i>
-            </a>
-
-            <a download href="assets/pdf/Completion_letter.pdf" class="button button--flex button--outline">
-              <span data-i18n="about.button.completion">Completion Letter</span>
-              <i class="uil uil-download-alt button__icon"></i>
-            </a>
-
-            <a download href="assets/pdf/DMU_Certificate.pdf" class="button button--flex button--outline">
-              <span>DMU Certificate</span>
-              <i class="uil uil-download-alt button__icon"></i>
-            </a>
-
-            <a download href="assets/pdf/APU_Certificate.pdf" class="button button--flex button--outline">
-              <span>APU Certificate</span>
-              <i class="uil uil-download-alt button__icon"></i>
-            </a>
-
-            <a download href="assets/pdf/GE Certificate.pdf" class="button button--flex button--outline">
-              <span>Board of Engineers Malaysia</span>
-              <i class="uil uil-download-alt button__icon"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--==================== SKILLS ====================-->
-    <section class="skills section" id="skills">
-      <h2 class="section__title" data-i18n="skills.title">Skills</h2>
-      <span class="section__subtitle" data-i18n="skills.subtitle">My Technical Proficiencies</span>
-
-      <div class="skills__container container grid">
-        <div>
-          <!-- Programming Skills -->
-          <div class="skills__content skills__close reveal">
-            <div class="skills__header">
-              <i class="uil uil-brackets-curly skills__icon"></i>
-              <div>
-                <h1 class="skills__title" data-i18n="skills.categories.0.title">Programming Skills</h1>
-                <span class="skills__subtitle" data-i18n="skills.categories.0.subtitle">Advanced vision algorithms &amp;
-                  software</span>
-              </div>
-              <i class="uil uil-angle-down skills__arrow"></i>
-            </div>
-
-            <div class="skills__list grid">
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.0.items.0.name">Python</h3>
-                  <span class="skills__number">90%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 90%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.0.items.1.name">C</h3>
-                  <span class="skills__number">80%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 80%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.0.items.2.name">MATLAB</h3>
-                  <span class="skills__number">75%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 75%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.0.items.3.name">OpenCV</h3>
-                  <span class="skills__number">85%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 85%;"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Automation & Robotics -->
-          <div class="skills__content skills__close reveal">
-            <div class="skills__header">
-              <i class="uil uil-server-network skills__icon"></i>
-              <div>
-                <h1 class="skills__title" data-i18n="skills.categories.1.title">Automation &amp; Robotics</h1>
-                <span class="skills__subtitle" data-i18n="skills.categories.1.subtitle">Control systems &amp;
-                  simulation</span>
-              </div>
-              <i class="uil uil-angle-down skills__arrow"></i>
-            </div>
-
-            <div class="skills__list grid">
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.1.items.0.name">ROS 2</h3>
-                  <span class="skills__number">80%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 80%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.1.items.1.name">Gazebo</h3>
-                  <span class="skills__number">70%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 70%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.1.items.2.name">RViz</h3>
-                  <span class="skills__number">75%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 75%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.1.items.3.name">Arduino</h3>
-                  <span class="skills__number">80%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 80%;"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <!-- Design & Simulation -->
-          <div class="skills__content skills__close reveal">
-            <div class="skills__header">
-              <i class="uil uil-swatchbook skills__icon"></i>
-              <div>
-                <h1 class="skills__title" data-i18n="skills.categories.2.title">Design &amp; Simulation</h1>
-                <span class="skills__subtitle" data-i18n="skills.categories.2.subtitle">CAD and system modeling</span>
-              </div>
-              <i class="uil uil-angle-down skills__arrow"></i>
-            </div>
-
-            <div class="skills__list grid">
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.2.items.0.name">SolidWorks</h3>
-                  <span class="skills__number">85%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 85%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.2.items.1.name">CX Designer</h3>
-                  <span class="skills__number">80%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 80%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.2.items.2.name">CX Programmer</h3>
-                  <span class="skills__number">75%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 75%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.2.items.3.name">Automation Studio</h3>
-                  <span class="skills__number">70%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 70%;"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Microsoft Programs -->
-          <div class="skills__content skills__close reveal">
-            <div class="skills__header">
-              <i class="uil uil-windows skills__icon"></i>
-              <div>
-                <h1 class="skills__title" data-i18n="skills.categories.3.title">Microsoft Programs</h1>
-                <span class="skills__subtitle" data-i18n="skills.categories.3.subtitle">Office Suite &amp; Collaboration
-                  Tools</span>
-              </div>
-              <i class="uil uil-angle-down skills__arrow"></i>
-            </div>
-
-            <div class="skills__list grid">
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.3.items.0.name">Word</h3>
-                  <span class="skills__number">90%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 90%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.3.items.1.name">Excel</h3>
-                  <span class="skills__number">85%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 85%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.3.items.2.name">PowerPoint</h3>
-                  <span class="skills__number">80%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 80%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.3.items.3.name">Outlook</h3>
-                  <span class="skills__number">75%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 75%;"></span>
-                </div>
-              </div>
-
-              <div class="skills__data">
-                <div class="skills__titles">
-                  <h3 class="skills__name" data-i18n="skills.categories.3.items.4.name">Teams</h3>
-                  <span class="skills__number">80%</span>
-                </div>
-                <div class="skills__bar">
-                  <span class="skills__percentage" style="width: 80%;"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--==================== QUALIFICATION ====================-->
-    <section class="qualification section">
-      <h2 class="section__title" data-i18n="qualification.title">Qualification</h2>
-      <span class="section__subtitle" data-i18n="qualification.subtitle">My personal journey</span>
-
-      <div class="qualification__container container">
-        <div class="qualification__tabs">
-          <div class="qualification__button button--flex qualification__active" data-target="#education" id="qual-edu-btn">
-            <i class="uil uil-graduation-cap qualification__icon"></i>
-            <span data-i18n="qualification.tabs.education">Education</span>
-          </div>
-          <div class="qualification__button button--flex" data-target="#work" id="qual-work-btn">
-            <i class="uil uil-briefcase-alt qualification__icon"></i>
-            <span data-i18n="qualification.tabs.work">Work</span>
-          </div>
-        </div>
-        <div class="qualification__sections">
-          <!-- Education Tab -->
-          <div class="qualification__content qualification__active" data-content="" id="education">
-          </div>
-
-          <!-- Work Tab -->
-          <div class="qualification__content" data-content="" id="work">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--==================== SERVICES ====================-->
-    <section class="services section" id="services">
-      <h2 class="section__title" data-i18n="services.title">Services</h2>
-      <span class="section__subtitle" data-i18n="services.subtitle">What I Offer</span>
-
-      <div class="services__container container grid">
-        <!-- SERVICE 1 -->
-        <div class="services__content reveal">
-          <div>
-            <i class="uil uil-eye services__icon"></i>
-            <h3 class="services__title" data-i18n="services.cards.0.title">Machine Vision<br>Engineer</h3>
-          </div>
-          <span class="button button--flex button--small button--link services__button" id="service-btn-0">
-            <span data-i18n="services.button"></span>
-            <i class="uil uil-arrow-right button__icon"></i>
-          </span>
-        </div>
-
-        <!-- SERVICE 2 -->
-        <div class="services__content reveal">
-          <div>
-            <i class="uil uil-robot services__icon"></i>
-            <h3 class="services__title" data-i18n="services.cards.1.title">Automation &amp;<br>Robotics Engineer</h3>
-          </div>
-          <span class="button button--flex button--small button--link services__button" id="service-btn-1">
-            <span data-i18n="services.button"></span>
-            <i class="uil uil-arrow-right button__icon"></i>
-          </span>
-        </div>
-
-        <!-- SERVICE 3 -->
-        <div class="services__content reveal">
-          <div>
-            <i class="uil uil-layer-group services__icon"></i>
-            <h3 class="services__title" data-i18n="services.cards.2.title">Mechatronics<br>Designer</h3>
-          </div>
-          <span class="button button--flex button--small button--link services__button" id="service-btn-2">
-            <span data-i18n="services.button"></span>
-            <i class="uil uil-arrow-right button__icon"></i>
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!--==================== PROJECTS ====================-->
-    <section class="projects section" id="projects">
-      <h2 class="section__title" data-i18n="projects.title">Projects</h2>
-      <span class="section__subtitle" data-i18n="projects.subtitle">Most Recent Projects</span>
-
-      <div class="portfolio__container container swiper-container">
-        <div class="swiper-wrapper">
-          <!-- Project 1: ELA: AI-Powered Humanoid Robot (FYP) -->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="images/portfolio1.jpg" alt="ELA: AI-Powered Humanoid Robot" class="portfolio__img">
-            <div class="portfolio__data">
-              <h3 class="portfolio__title" data-i18n="projects.cards.0.title">ELA: AI-Powered Humanoid Robot (FYP)</h3>
-              <p class="portfolio__description" data-i18n="projects.cards.0.desc">
-                Built a ROS 2-based humanoid robot capable of voice interaction, gesture recognition, and autonomous
-                navigation. Enabled arm control via RViz and integrated MediaPipe.
-              </p>
-              <a href="https://youtu.be/vz-rHjiD1CY" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                <span data-i18n="projects.cards.0.button">Watch Demo</span> <i class="uil uil-play button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 2: Smart AGV for Chili Farm Monitoring (GDP) -->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="images/portfolio2.jpg" alt="Smart AGV for Chili Farm Monitoring" class="portfolio__img">
-            <div class="portfolio__data">
-              <h3 class="portfolio__title" data-i18n="projects.cards.1.title">Smart AGV for Chili Farm Monitoring (GDP)
-              </h3>
-              <p class="portfolio__description" data-i18n="projects.cards.1.desc">
-                Led the machine vision module to detect diseases on chili plants using a custom-trained model. Designed
-                a selective spraying mechanism and collaborated on AGV navigation and electronics.
-              </p>
-              <a href="https://youtu.be/CEMS_T3vCuo" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                <span data-i18n="projects.cards.1.button">Watch Demo</span> <i class="uil uil-play button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 3: Eva AI Desktop Assistant -->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="images/Eva.jpg" alt="Eva AI Desktop Assistant" class="portfolio__img">
-            <div class="portfolio__data">
-              <h3 class="portfolio__title" data-i18n="projects.cards.2.title">Eva AI Desktop Assistant</h3>
-              <p class="portfolio__description" data-i18n="projects.cards.2.desc">
-                An intelligent desktop companion that integrates AI-powered task management, calendar scheduling, email
-                handling, and cross-platform notifications through natural language commands. Combines Mistral's
-                language models with real-time system automation for seamless productivity enhancement.
-              </p>
-              <a href="https://github.com/Astro-5444/Eva" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                <span data-i18n="projects.cards.2.button">GitHub Repository</span> <i
-                  class="uil uil-github button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 4: Automatic Stamping System -->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="images/portfolio3.jpg" alt="Automatic Stamping System" class="portfolio__img">
-            <div class="portfolio__data">
-              <h3 class="portfolio__title" data-i18n="projects.cards.3.title">Automatic Stamping System</h3>
-              <p class="portfolio__description" data-i18n="projects.cards.3.desc">
-                Designed and simulated an automated stamping sequence using CX Designer and CX Programmer.
-              </p>
-            </div>
-          </div>
-
-          <!-- Project 5: Scratches and Bent Pins Scanner -->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="images/portfolio4.jpg" alt="Scratches and Bent Pins Scanner" class="portfolio__img">
-            <div class="portfolio__data">
-              <h3 class="portfolio__title" data-i18n="projects.cards.4.title">Scratches and Bent Pins Scanner</h3>
-              <p class="portfolio__description" data-i18n="projects.cards.4.desc">
-                A vision-based inspection system designed to detect surface scratches and bent pins on automotive ECUs
-                using the Zebra VS40 smart camera, ensuring high accuracy and reliability in quality control.
-              </p>
-              <a href="https://youtu.be/Dxaxf0dK5Bs" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                <span data-i18n="projects.cards.4.button">Watch Demo</span> <i class="uil uil-play button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 6: Meat Blender Engineering -->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="images/portfolio5.jpg" alt="Meat Blender Engineering" class="portfolio__img">
-            <div class="portfolio__data">
-              <h3 class="portfolio__title" data-i18n="projects.cards.5.title">Meat Blender Engineering</h3>
-              <p class="portfolio__description" data-i18n="projects.cards.5.desc">
-                Designed a meat blender and calculated key mechanical parameters for optimal performance.
-              </p>
-              <a href="https://youtu.be/ADuBzvwOZrs" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                <span data-i18n="projects.cards.5.button">Watch Demo</span> <i class="uil uil-play button__icon"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 7: Automated Storage Elevator System -->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="images/portfolio6.jpg" alt="Automated Storage Elevator System" class="portfolio__img">
-            <div class="portfolio__data">
-              <h3 class="portfolio__title" data-i18n="projects.cards.6.title">Automated Storage Elevator System</h3>
-              <p class="portfolio__description" data-i18n="projects.cards.6.desc">
-                Designed and implemented an elevator-based storage system using pneumatic air cylinders for motion
-                control.
-              </p>
-            </div>
-          </div>
-
-          <!-- Project 8: CNC Turning Process Simulation -->
-          <div class="portfolio__content grid swiper-slide">
-            <img src="images/portfolio7.jpg" alt="CNC Turning Process Simulation" class="portfolio__img">
-            <div class="portfolio__data">
-              <h3 class="portfolio__title" data-i18n="projects.cards.7.title">CNC Turning Process Simulation</h3>
-              <p class="portfolio__description" data-i18n="projects.cards.7.desc">
-                Simulated and validated CNC turning operations using CNC Simulator Pro, applying proper tool selection,
-                material setup, and G-code programming to optimize machining accuracy and efficiency.
-              </p>
-              <a href="https://youtu.be/k1dV8i0zwRc" target="_blank"
-                class="button button--flex button--small portfolio__button">
-                <span data-i18n="projects.cards.7.button">Watch Demo</span> <i class="uil uil-play button__icon"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Swiper Navigation Elements -->
-        <div class="swiper-button-next" id="portfolio-next">
-          <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-        </div>
-        <div class="swiper-button-prev" id="portfolio-prev">
-          <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-        </div>
-
-        <div class="swiper-pagination" id="portfolio-pagination"></div>
-      </div>
-    </section>
-
-    <!--==================== VIDEO MODAL ====================-->
-    <div id="videoModal" class="video-modal" style="display: none;">
-      <div class="video-modal-content">
-        <span class="video-modal-close" onclick="closeVideoModal()">&times;</span>
-        <div class="video-responsive-wrapper">
-          <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
     </div>
+  </div>
+</section>
+<div class="paper-rule"></div>
 
-    <!-- JavaScript for Video Modal -->
-    <script>
-      function openVideoModal(videoURL) {
-        document.getElementById('videoFrame').src = videoURL;
-        document.getElementById('videoModal').style.display = "block";
-      }
-      function closeVideoModal() {
-        document.getElementById('videoModal').style.display = "none";
-        document.getElementById('videoFrame').src = "";
-      }
-      window.onclick = function (event) {
-        var modal = document.getElementById('videoModal');
-        if (event.target === modal) { closeVideoModal(); }
-      }
-    </script>
-
-    <!--==================== CONTACT ME ====================-->
-    <section class="contact section" id="contact">
-      <div class="section__title" data-i18n="contact.title">Contact Me</div>
-      <span class="section__subtitle" data-i18n="contact.subtitle">Get in touch</span>
-
-      <div class="contact__container container grid">
+<!-- EDUCATION -->
+<section id="experience" class="paper-section">
+  <div class="psi">
+    <p class="ps-label reveal">School</p>
+    <h2 class="ps-h2 reveal d1">Qualification &amp; <em>Education</em></h2>
+    <div class="reveal d1">
+      <div class="qual-col-t">Education</div>
+      <div class="qual-item">
+        <div class="qdot"></div>
         <div>
-          <div class="contact__information reveal-left">
-            <i class="uil uil-phone contact__icon"></i>
-            <div>
-              <h3 class="contact__title" data-i18n="contact.info.0.title">Phone number</h3>
-              <span class="contact__subtitle">
-                <div data-i18n="contact.info.0.subtitle.0">EG: +201501557221</div>
-                <div data-i18n="contact.info.0.subtitle.1">MY: +601139919753</div>
-              </span>
-            </div>
-          </div>
-          <div class="contact__information reveal-left" style="transition-delay: 0.1s;">
-            <i class="uil uil-envelope contact__icon"></i>
-            <div>
-              <h3 class="contact__title" data-i18n="contact.info.1.title">Email</h3>
-              <span class="contact__subtitle" data-i18n="contact.info.1.subtitle">abdulrhmanhimk@gmail.com</span>
-            </div>
-          </div>
+          <div class="qt">Bachelor of Mechatronics Engineering (Hons.)</div>
+          <div class="qs">Asia Pacific University, Malaysia</div>
+          <div class="qd">2021 – 2025</div>
         </div>
-
-        <form action="https://api.web3forms.com/submit" method="POST" class="contact__form grid reveal-right" id="contact-form">
-          <input type="hidden" name="access_key" value="cec5f003-b7e9-4b99-a77f-5516a7f80398">
-          <div class="contact__inputs grid">
-            <div class="contact__content">
-              <label for="name" class="contact__label" data-i18n="contact.form.name.label">Name</label>
-              <input type="text" id="name" name="name" class="contact__input" required placeholder="Your name">
-            </div>
-            <div class="contact__content">
-              <label for="email" class="contact__label" data-i18n="contact.form.email.label">Email</label>
-              <input type="email" id="email" name="email" class="contact__input" required placeholder="your@email.com">
-            </div>
-          </div>
-          <div class="contact__content">
-            <label for="project" class="contact__label" data-i18n="contact.form.project.label">Project</label>
-            <input type="text" id="project" name="project" class="contact__input" placeholder="What's your project?">
-          </div>
-          <div class="contact__content">
-            <label for="message" class="contact__label" data-i18n="contact.form.message.label">Message</label>
-            <textarea id="message" name="message" cols="0" rows="7" class="contact__input" required placeholder="Tell me about your project..."></textarea>
-          </div>
-
-          <div>
-            <button type="submit" class="button button--flex button--small portfolio__button" id="submit-btn">
-              <span data-i18n="contact.form.submit">Send Message</span>
-              <i class="uil uil-message button__icon"></i>
-            </button>
-          </div>
-        </form>
       </div>
-    </section>
-  </main>
-
-  <!--==================== FOOTER ====================-->
-  <footer class="footer">
-    <div class="footer__bg">
-      <div class="footer__container container grid">
+      <div class="qual-item">
+        <div class="qdot"></div>
         <div>
-          <h1 class="footer__title" data-i18n="footer.title">Abdelrhman Hazem Khalil</h1>
-          <span class="footer__subtitle" data-i18n="footer.subtitle">Mechatronics Engineer</span>
+          <div class="qt">Master of Mechatronics Engineering</div>
+          <div class="qs">De Montfort University — collaborative programme with APU</div>
+          <div class="qd">2021 – 2025</div>
         </div>
-
-        <ul class="footer__links">
-          <li>
-            <a href="#services" class="footer__link" data-i18n="footer.links.0">Services</a>
-          </li>
-          <li>
-            <a href="#projects" class="footer__link" data-i18n="footer.links.1">Projects</a>
-          </li>
-          <li>
-            <a href="#contact" class="footer__link" data-i18n="footer.links.2">Contact</a>
-          </li>
-        </ul>
-
-        <div class="footer__socials">
-          <a href="https://eg.linkedin.com/in/abdulrhman-khalil-04361a2b7" target="_blank" class="footer__social" aria-label="LinkedIn">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"
-              style="width: 20px; height: 20px; filter: brightness(0) invert(1);">
-          </a>
-          <a href="https://huggingface.co/Abdel2001" target="_blank" class="footer__social" aria-label="Hugging Face">
-            <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face"
-              style="width: 20px; height: 20px; filter: brightness(0) invert(1);">
-          </a>
-          <a href="https://github.com/Astro-5444" target="_blank" class="footer__social" aria-label="GitHub">
-            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"
-              style="width: 20px; height: 20px; filter: brightness(0) invert(1);">
-          </a>
-        </div>
-
-        <p class="footer__copy" data-i18n="footer.copy">© 2025 Abdelrhman Hazem Khalil. All rights reserved.</p>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+<div class="paper-rule"></div>
 
-  <!--==================== SCROLL TOP ====================-->
-  <a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top">
-    <i class="uil uil-arrow-up scrollup__icon"></i>
-  </a>
+<!-- WORK EXPERIENCE -->
+<section id="work" class="paper-section">
+  <div class="psi">
+    <p class="ps-label reveal">Where I've Been</p>
+    <h2 class="ps-h2 reveal d1">Work <em>Experience</em></h2>
+    <div class="reveal d1">
+      <div class="qual-item">
+        <div class="qdot"></div>
+        <div>
+          <div class="qt">Machine Vision &amp; Automation Intern</div>
+          <div class="qs">Control Easy Technology Sdn. Bhd. — Malaysia</div>
+          <div class="qd">Feb 2024 – Jun 2024</div>
+          <div class="qdet">
+            <ul class="qdet-list">
+              <li>Set up Zebra VS40 and FS10 cameras on the production line for object tracking, edge detection, distance measurement, and barcode scanning. First deployment had a ~30% false-positive rate — fixed by rethinking the lighting angle and rewriting the thresholding logic.</li>
+              <li>Built an automated scratch detection system from the ground up — hardware selection, image processing algorithms, prototyping, calibration. The hardest part was teaching the camera to ignore shadows cast by the overhead factory lighting.</li>
+              <li>Engineered a pin measurement vision system to detect bent pins. The first approach worked perfectly in the lab but failed on the factory floor (vibration was throwing off measurements). Redesigned the logic to account for real-world conditions.</li>
+              <li>Programmed C# GUIs to interface directly with camera servers for real-time data collection, processing, and equipment control.</li>
+              <li>3D-modeled and printed custom universal camera holders. Version 1 was too flimsy. Version 3 was too heavy. Version 5 was just right.</li>
+              <li>Integrated hardware and software components for automated quality control — improved defect detection on the production line.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="qual-item">
+        <div class="qdot"></div>
+        <div>
+          <div class="qt">ICT Draftsman</div>
+          <div class="qs">AVIS — Egypt</div>
+          <div class="qd">Dec 2025 – Jul 2026</div>
+          <div class="qdet">
+            <ul class="qdet-list">
+              <li>Reviewed architectural layouts in AutoCAD to understand building structures, floors, blocks, sections, and room layouts.</li>
+              <li>Designed ICT systems and documentation for hotels, mixed-use developments, hospitals, residential buildings, and schools.</li>
+              <li>Analyzed floor plans and calculated placement for data and telephone points across multi-story buildings.</li>
+              <li>Mapped connectivity between floor-level racks and the overall building network infrastructure.</li>
+              <li>Prepared ICT Project Design Matrices (PDMs) and quantity calculations for racks, patch panels, patch cords, and data outlets.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="paper-rule"></div>
 
-  <!--==================== SWIPER JS ====================-->
-  <script src="js/swiper-bundle.min.js"></script>
+<!-- PROJECTS -->
+<section id="projects" class="paper-section">
+  <div class="psi">
+    <p class="ps-label reveal">Most Recent Work</p>
+    <h2 class="ps-h2 reveal d1">Projects &amp; <em>Builds</em></h2>
+    <p class="ps-micro reveal d1">Most of these have videos. The ones that don't... I forgot to press record.</p>
+    <div class="proj-layout reveal d2">
+      <div class="proj-list" id="projList">
+        <div class="proj-row" data-index="0">
+          <span class="proj-num">01</span>
+          <div class="proj-info">
+            <div class="proj-name">ELA: AI-Powered Humanoid Robot</div>
+            <div class="proj-desc">ROS 2-based humanoid with voice interaction, gesture recognition, and autonomous navigation. Arm control via RViz with MediaPipe integration. Biggest challenge: getting gesture recognition to work across different lighting conditions without retraining. <em style="opacity:.4">(FYP)</em></div>
+            <a href="https://youtu.be/vz-rHjiD1CY" target="_blank" class="proj-link">Watch Video</a>
+          </div>
+        </div>
 
-  <!--==================== MAIN JS ====================-->
-  <script src="js/main.js"></script>
+        <div class="proj-row" data-index="1">
+          <span class="proj-num">02</span>
+          <div class="proj-info">
+            <div class="proj-name">Smart AGV — Chili Farm</div>
+            <div class="proj-desc">Led the machine vision module to detect crop diseases using a custom-trained model. Designed a selective spraying mechanism that only targets infected plants — no waste. Also supported AGV navigation and electronics integration. <em style="opacity:.4">(GDP)</em></div>
+            <a href="https://youtu.be/CEMS_T3vCuo" target="_blank" class="proj-link">Watch Video</a>
+          </div>
+        </div>
 
-  <!--==================== TRANSLATION JS ====================-->
-  <script src="js/translations.js"></script>
+        <div class="proj-row" data-index="2">
+          <span class="proj-num">03</span>
+          <div class="proj-info">
+            <div class="proj-name">Eva AI Desktop Assistant</div>
+            <div class="proj-desc">Intelligent desktop assistant handling task management, scheduling, email, and system automation — all through natural language. Powered by Mistral language models. Used it daily for months; it's genuinely useful.</div>
+            <a href="https://github.com/Astro-5444/Eva" target="_blank" class="proj-link">GitHub Repo</a>
+          </div>
+        </div>
 
-  <!-- Enhanced Features Script -->
-  <script>
-    // Page Loader
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('page-loader');
-      if (loader) {
-        setTimeout(() => {
-          loader.classList.add('hidden');
-        }, 600);
+        <div class="proj-row" data-index="3">
+          <span class="proj-num">04</span>
+          <div class="proj-info">
+            <div class="proj-name">Automatic Stamping System</div>
+            <div class="proj-desc">Designed and simulated a fully automated stamping sequence using CX Designer and CX Programmer — PLC-based control for production line integration.</div>
+            <span style="visibility:hidden" class="proj-link">—</span>
+          </div>
+        </div>
+
+        <div class="proj-row" data-index="4">
+          <span class="proj-num">05</span>
+          <div class="proj-info">
+            <div class="proj-name">Scratches &amp; Bent Pins Scanner</div>
+            <div class="proj-desc">Machine-vision inspection for automotive ECU quality control. Caught bent pins under 0.2mm deviation and surface scratches using the Zebra VS40 smart camera. Took three iterations to get the false-positive rate acceptable.</div>
+            <a href="https://youtu.be/Dxaxf0dK5Bs" target="_blank" class="proj-link">Watch Video</a>
+          </div>
+        </div>
+
+        <div class="proj-row" data-index="5">
+          <span class="proj-num">06</span>
+          <div class="proj-info">
+            <div class="proj-name">Meat Blender Engineering</div>
+            <div class="proj-desc">Designed a meat blender with full mechanical calculations — torque, power requirements, material selection for optimal performance and durability.</div>
+            <a href="https://youtu.be/ADuBzvwOZrs" target="_blank" class="proj-link">Watch Video</a>
+          </div>
+        </div>
+
+        <div class="proj-row" data-index="6">
+          <span class="proj-num">07</span>
+          <div class="proj-info">
+            <div class="proj-name">Automated Storage Elevator</div>
+            <div class="proj-desc">Designed and implemented a storage elevator using pneumatic air cylinders for precise, sequential motion control. Learned that pneumatics are simple and reliable — sometimes the boring solution is the best one.</div>
+            <span style="visibility:hidden" class="proj-link">—</span>
+          </div>
+        </div>
+
+        <div class="proj-row" data-index="7">
+          <span class="proj-num">08</span>
+          <div class="proj-info">
+            <div class="proj-name">CNC Turning Simulation</div>
+            <div class="proj-desc">Simulated and validated CNC turning operations using CNC Simulator Pro — tool selection, material setup, and G-code programming to optimise machining accuracy.</div>
+            <a href="https://youtu.be/k1dV8i0zwRc" target="_blank" class="proj-link">Watch Video</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-image-container">
+        <div class="proj-image-sticky">
+          <img src="images/portfolio1.jpg" class="proj-img active" data-index="0">
+          <img src="images/portfolio2.jpg" class="proj-img" data-index="1">
+          <img src="images/Eva.jpg" class="proj-img" data-index="2">
+          <img src="images/portfolio3.jpg" class="proj-img" data-index="3">
+          <img src="images/portfolio4.jpg" class="proj-img" data-index="4">
+          <img src="images/portfolio5.jpg" class="proj-img" data-index="5">
+          <img src="images/portfolio6.jpg" class="proj-img" data-index="6">
+          <img src="images/portfolio7.jpg" class="proj-img" data-index="7">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="paper-rule"></div>
+
+<!-- DOWNLOADS / CERTIFICATES -->
+<section id="downloads" class="paper-section">
+  <div class="psi">
+    <p class="ps-label reveal">Credentials</p>
+    <h2 class="ps-h2 reveal d1">Certificates &amp; <em>Docs</em></h2>
+    <div class="dl-grid reveal d2">
+      <a download href="assets/pdf/Abdelrhman-CV-EN.pdf" class="dl-card">
+        <div class="dl-name">Resume / CV</div>
+      </a>
+      <a download href="assets/pdf/Completion_letter.pdf" class="dl-card">
+        <div class="dl-name">Completion Letter</div>
+      </a>
+      <a download href="assets/pdf/DMU_Certificate.pdf" class="dl-card">
+        <div class="dl-name">DMU Certificate</div>
+      </a>
+      <a download href="assets/pdf/APU_Certificate.pdf" class="dl-card">
+        <div class="dl-name">APU Certificate</div>
+      </a>
+      <a download href="assets/pdf/GE%20Certificate.pdf" class="dl-card">
+        <div class="dl-name">Board of Engineers Malaysia</div>
+      </a>
+    </div>
+  </div>
+</section>
+<div class="paper-rule"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="paper-section">
+  <div class="psi">
+    <p class="ps-label reveal">Get In Touch</p>
+    <h2 class="ps-h2 reveal d1">Contact <em>Me</em></h2>
+    <p class="ps-micro reveal d1">I'm based in Egypt but open to relocation. If your project involves cameras, robots, or both — let's talk.</p>
+    <div class="contact-cols">
+      <div class="contact-rows reveal d2">
+        <div class="crow"><span class="clbl">Phone</span><span class="cval">EG: +201501557221</span></div>
+        <div class="crow"><span class="clbl">Email</span><span class="cval"><a href="mailto:abdulrhmanhimk@gmail.com">abdulrhmanhimk@gmail.com</a></span></div>
+        <div class="crow"><span class="clbl">Location</span><span class="cval">Egypt — open to relocation</span></div>
+        <div class="crow"><span class="clbl">LinkedIn</span><span class="cval"><a href="https://eg.linkedin.com/in/abdulrhman-khalil-04361a2b7" target="_blank">linkedin.com/in/abdulrhman-khalil</a></span></div>
+      </div>
+      <form action="https://api.web3forms.com/submit" method="POST" class="c-form reveal d2">
+        <input type="hidden" name="access_key" value="3430853c-29eb-4115-a463-187d126d49cf">
+        <div class="c-field"><label for="fn">Your Name</label><input id="fn" name="name" type="text" placeholder="Johnny Silverhand" required/></div>
+        <div class="c-field"><label for="fe">Email</label><input id="fe" name="email" type="email" placeholder="Johnny@samurai.net" required/></div>
+        <div class="c-field"><label for="fp">Project / Subject</label><input id="fp" name="project" type="text" placeholder="Project 2077"/></div>
+        <div class="c-field"><label for="fm">Message</label><textarea id="fm" name="message" placeholder="Wake up, engineer. We have a project to build." required></textarea></div>
+        <button type="submit" class="btn-ink">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="paper-footer">
+  <span class="foot-logo">A.H. Khalil</span>
+  <span class="foot-copy">&copy; Astro-5444 &middot; All rights reserved</span>
+</footer>
+
+<!-- Loader script: kinetic typography intro -->
+<script>
+(function(){
+  'use strict';
+
+  var loader   = document.getElementById('loader');
+  var wordEl   = document.getElementById('loaderWord');
+  var caption  = document.getElementById('loaderCaption');
+  if (!loader || !wordEl || !caption) return;
+
+  var text = 'Abdelrhman';
+  var stagger = 130;   // ms between letters
+  var baseDelay = 300; // ms before first letter
+  var rhythmOffsets = [0, 20, -10, 30, 0, 15, -20, 25, 5, -15];
+  var done = false;
+
+  function finish(){
+    if (done) return;
+    done = true;
+    loader.classList.add('done');
+    setTimeout(function(){
+      if (loader.parentNode) loader.parentNode.removeChild(loader);
+      window.dispatchEvent(new CustomEvent('loader-done'));
+    }, 700);
+  }
+
+  // Safety net: never block the site longer than ~6s
+  setTimeout(finish, 6000);
+
+  text.split('').forEach(function(ch, i){
+    var span = document.createElement('span');
+    span.className = 'ld-letter';
+    span.textContent = ch;
+    wordEl.appendChild(span);
+
+    var delay = baseDelay + i * stagger + (rhythmOffsets[i % rhythmOffsets.length] || 0);
+    setTimeout(function(){ span.classList.add('enter'); }, delay);
+  });
+
+  var totalTime = baseDelay + text.length * stagger + 900;
+
+  setTimeout(function(){
+    wordEl.classList.add('settled');
+    var letters = wordEl.querySelectorAll('.ld-letter');
+    for (var i = 0; i < letters.length; i++){
+      letters[i].style.animationDelay = (i * 0.15) + 's';
+    }
+    caption.classList.add('show');
+    setTimeout(finish, 1700);
+  }, totalTime);
+
+  // Ambient floating gold particles
+  for (var p = 0; p < 24; p++){
+    (function(){
+      var el = document.createElement('div');
+      el.className = 'ld-particle';
+      var size = Math.random() * 3 + 1;
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.left = Math.random() * 100 + '%';
+      el.style.top = Math.random() * 100 + '%';
+      el.style.opacity = (Math.random() * 0.4 + 0.1).toFixed(2);
+      loader.appendChild(el);
+
+      var duration = Math.random() * 6 + 6;
+      var delay = Math.random() * 4;
+      el.animate([
+        { transform: 'translateY(0px)', opacity: 0 },
+        { transform: 'translateY(-40px)', opacity: el.style.opacity },
+        { transform: 'translateY(-80px)', opacity: 0 }
+      ], {
+        duration: duration * 1000,
+        delay: delay * 1000,
+        iterations: Infinity,
+        easing: 'ease-in-out'
+      });
+    })();
+  }
+
+  // Click anywhere on the loader to skip straight to the site
+  loader.addEventListener('click', finish);
+})();
+</script>
+
+<script>
+(function(){
+  'use strict';
+
+  var IMAGE_SRC  = 'images/cv.jpg';
+  var NUM_SLICES = 1;
+
+  var heroRight  = document.getElementById('heroRight');
+  var spring     = document.getElementById('paperSpring');
+  var paperFold  = document.getElementById('paperFold');
+  var foldImgs   = document.querySelectorAll('.roll-img');
+
+  heroRight.style.perspective       = '1300px';
+  heroRight.style.perspectiveOrigin = '50% 40%';
+
+  var loaded = 0;
+  var loaderDone = false;
+
+  function maybeReveal(){
+    if (loaderDone && loaded >= NUM_SLICES) revealPaper();
+  }
+
+  function onImageReady(){
+    loaded++;
+    if (loaded < NUM_SLICES) return;
+    maybeReveal();
+  }
+
+  window.addEventListener('loader-done', function(){
+    loaderDone = true;
+    maybeReveal();
+  });
+
+  // Backstop: never leave the hero hidden if the loader script fails
+  setTimeout(function(){
+    loaderDone = true;
+    var loaderEl = document.getElementById('loader');
+    if (loaderEl) loaderEl.style.display = 'none';
+    maybeReveal();
+  }, 8000);
+
+  for (var i = 0; i < foldImgs.length; i++){
+    if (foldImgs[i].complete) onImageReady();
+    else foldImgs[i].addEventListener('load', onImageReady);
+  }
+
+  for (var j = 0; j < foldImgs.length; j++){
+    foldImgs[j].addEventListener('error', onImageReady);
+  }
+
+  function revealPaper(){
+    setTimeout(function(){
+      paperFold.classList.add('is-unfolding');
+
+      setTimeout(function(){
+        paperFold.classList.add('is-unfolded');
+        startParallax();
+      }, 1800);
+    }, 300);
+  }
+
+  function Spring(stiffness, damping){
+    this.k = stiffness;
+    this.b = damping;
+    this.x = 0;
+    this.v = 0;
+    this.t = 0;
+  }
+  Spring.prototype.step = function(dt){
+    var f = -this.k * (this.x - this.t) - this.b * this.v;
+    this.v += f * dt;
+    this.x += this.v * dt;
+  };
+
+  var sRx = new Spring(80, 14);
+  var sRy = new Spring(80, 14);
+  var currentScale = 1;
+  var scaleTarget = 1;
+  var parallaxActive = false;
+
+  var dragging = false;
+  var dragged  = false;
+  var dragStartX = 0, dragStartY = 0;
+  var dragBaseX = 0, dragBaseY = 0;
+
+  function setLights(e){
+    var paperRect = paperFold.getBoundingClientRect();
+    paperFold.style.setProperty('--shine-x', (e.clientX - paperRect.left) + 'px');
+    paperFold.style.setProperty('--shine-y', (e.clientY - paperRect.top) + 'px');
+  }
+
+  function startParallax(){
+    parallaxActive = true;
+    paperFold.addEventListener('mouseenter', function() { if (!dragging) scaleTarget = 1.06; });
+    paperFold.addEventListener('mouseleave', function() { if (!dragging) scaleTarget = 1; });
+  }
+
+  // Drag to spin the paper in 3D; the springs snap it back on release
+  paperFold.addEventListener('mousedown', function(e){
+    if (e.button !== 0) return;
+    dragging = true;
+    dragged  = false;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    dragBaseX  = sRy.t;
+    dragBaseY  = sRx.t;
+    scaleTarget = 1.03;
+    paperFold.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function(e){
+    if (!dragging) return;
+    var dx = e.clientX - dragStartX;
+    var dy = e.clientY - dragStartY;
+    if (Math.abs(dx) + Math.abs(dy) > 8) dragged = true;
+    sRy.t = Math.max(-28, Math.min(28, dragBaseX + dx * 0.5));
+    sRx.t = Math.max(-18, Math.min(18, dragBaseY - dy * 0.5));
+    setLights(e);
+  });
+
+  document.addEventListener('mouseup', function(){
+    if (!dragging) return;
+    dragging = false;
+    sRx.t = 0;
+    sRy.t = 0;
+    scaleTarget = 1;
+    paperFold.style.cursor = '';
+    if (dragged){
+      setTimeout(function(){ dragged = false; }, 400);
+    }
+  });
+
+  // A real drag shouldn't trigger the CV download
+  document.addEventListener('click', function(e){
+    if (dragged){
+      e.preventDefault();
+      e.stopPropagation();
+      dragged = false;
+    }
+  }, true);
+
+  heroRight.addEventListener('mousemove', function(e){
+    if (!parallaxActive || dragging) return;
+    var r = heroRight.getBoundingClientRect();
+    var nx = Math.max(-1, Math.min(1,
+      (e.clientX - r.left - r.width  / 2) / (r.width  / 2)));
+    var ny = Math.max(-1, Math.min(1,
+      (e.clientY - r.top  - r.height / 2) / (r.height / 2)));
+    sRy.t =  nx * 10;
+    sRx.t = -ny * 7;
+    setLights(e);
+
+    var hx = (nx * 50 + 50) + '%';
+    var hy = (ny * 50 + 50) + '%';
+    paperFold.style.setProperty('--holo-pos', hx + ' ' + hy);
+  });
+
+  heroRight.addEventListener('mouseleave', function(){
+    if (dragging) return;
+    sRx.t = 0; sRy.t = 0;
+  });
+
+  var lastT = performance.now();
+  function tick(now){
+    var dt = Math.min((now - lastT) / 1000, 0.05);
+    lastT = now;
+    if (parallaxActive){
+      sRx.step(dt); sRy.step(dt);
+      currentScale += (scaleTarget - currentScale) * 0.1;
+
+      spring.style.transform =
+        'perspective(1000px)' +
+        ' rotateX(' + sRx.x.toFixed(3) + 'deg)' +
+        ' rotateY(' + sRy.x.toFixed(3) + 'deg)' +
+        ' scale(' + currentScale.toFixed(3) + ')';
+
+      var shadowX = (sRy.x * -4).toFixed(1);
+      var baseShadowY = 15 + (currentScale - 1) * 200;
+      var shadowY = (sRx.x * 4 + baseShadowY).toFixed(1);
+      var shadowBlur = (25 + (currentScale - 1) * 300).toFixed(1);
+      var shadowAlpha = (0.25 - (currentScale - 1) * 1.5).toFixed(2);
+      paperFold.style.filter = 'drop-shadow(' + shadowX + 'px ' + shadowY + 'px ' + shadowBlur + 'px rgba(0,0,0,' + shadowAlpha + '))';
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  var reveals = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
       }
     });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el){ io.observe(el); });
 
-    // Intersection Observer for reveal animations
-    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          entry.target.style.transitionDelay = (index * 0.08) + 's';
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
+  var projRows = document.querySelectorAll('.proj-row');
+  var projImgs = document.querySelectorAll('.proj-img');
+
+  if(projRows.length > 0 && projImgs.length > 0) {
+    projRows[0].classList.add('active');
+
+    var projObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          projRows.forEach(function(row) { row.classList.remove('active'); });
+          projImgs.forEach(function(img) { img.classList.remove('active'); });
+
+          e.target.classList.add('active');
+          var idx = e.target.getAttribute('data-index');
+
+          var targetImg = document.querySelector('.proj-img[data-index="' + idx + '"]');
+          if(targetImg) targetImg.classList.add('active');
         }
       });
-    }, { threshold: 0.12 });
+    }, { rootMargin: '-40% 0px -40% 0px' });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    projRows.forEach(function(el){ projObserver.observe(el); });
+  }
 
-    // Skill bar animation on scroll
-    const skillsSection = document.getElementById('skills');
-    let skillsAnimated = false;
-    const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !skillsAnimated) {
-          skillsAnimated = true;
-          const bars = document.querySelectorAll('.skills__percentage');
-          bars.forEach(bar => {
-            const targetWidth = bar.style.width;
-            bar.style.width = '0';
-            requestAnimationFrame(() => {
-              setTimeout(() => { bar.style.width = targetWidth; }, 50);
-            });
-          });
-        }
-      });
-    }, { threshold: 0.2 });
+  var themeToggle = document.getElementById('themeToggle');
+  var themeIcon = themeToggle.querySelector('.theme-icon');
+  var savedTheme = localStorage.getItem('theme');
 
-    if (skillsSection) skillObserver.observe(skillsSection);
+  if(savedTheme === 'dark'){
+    document.body.classList.add('dark');
+    themeIcon.textContent = '\u263E';
+  }
 
-    // Counter animation for About info
-    function animateCounter(element, target, duration = 1500) {
-      let start = 0;
-      const step = (timestamp) => {
-        if (!start) start = timestamp;
-        const progress = Math.min((timestamp - start) / duration, 1);
-        const value = Math.floor(progress * target);
-        element.textContent = value + (element.dataset.suffix || '+');
-        if (progress < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }
+  themeToggle.addEventListener('click', function(){
+    document.body.classList.toggle('dark');
+    var isDark = document.body.classList.contains('dark');
+    themeIcon.textContent = isDark ? '\u263E' : '\u2600';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
 
-    const aboutSection = document.getElementById('about');
-    let countersAnimated = false;
-    if (aboutSection) {
-      const aboutObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !countersAnimated) {
-            countersAnimated = true;
-          }
-        });
-      }, { threshold: 0.3 });
-      aboutObserver.observe(aboutSection);
-    }
-  </script>
-
-  <!-- ====== SERVICE MODALS (placed at body level for correct position:fixed behaviour) ====== -->
-  <!-- Modal 0: Machine Vision -->
-  <div class="services__modal" id="modal-0">
-    <div class="services__modal-content">
-      <h4 class="services__modal-title" data-i18n="services.cards.0.modal.title">Machine Vision<br>Engineer</h4>
-      <i class="uil uil-times services__modal-close" id="service-close-0"></i>
-      <ul class="services__modal-services grid">
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.0.modal.points.0">Develop real-time quality inspection systems.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.0.modal.points.1">Implement and optimize vision algorithms using OpenCV and MediaPipe.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.0.modal.points.2">Integrate industrial cameras with production lines.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.0.modal.points.3">Adjust lighting and thresholds for defect detection.</p></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Modal 1: Automation & Robotics -->
-  <div class="services__modal" id="modal-1">
-    <div class="services__modal-content">
-      <h4 class="services__modal-title" data-i18n="services.cards.1.modal.title">Automation &amp;<br>Robotics Engineer</h4>
-      <i class="uil uil-times services__modal-close" id="service-close-1"></i>
-      <ul class="services__modal-services grid">
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.1.modal.points.0">Design automation systems and control solutions.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.1.modal.points.1">Develop and simulate robotic systems using ROS 2 and Gazebo.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.1.modal.points.2">Integrate microcontrollers like Arduino and ESP32.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.1.modal.points.3">Collaborate on cross-functional engineering projects.</p></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Modal 2: Mechatronics Designer -->
-  <div class="services__modal" id="modal-2">
-    <div class="services__modal-content">
-      <h4 class="services__modal-title" data-i18n="services.cards.2.modal.title">Mechatronics<br>Designer</h4>
-      <i class="uil uil-times services__modal-close" id="service-close-2"></i>
-      <ul class="services__modal-services grid">
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.2.modal.points.0">Design mechanical components using SolidWorks.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.2.modal.points.1">Develop and simulate systems with CX Designer and CX Programmer.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.2.modal.points.2">Optimize designs for performance and efficiency.</p></li>
-        <li class="services__modal-service"><i class="uil uil-check-circle services__modal-icon"></i><p data-i18n="services.cards.2.modal.points.3">Create prototypes for innovative automation.</p></li>
-      </ul>
-    </div>
-  </div>
+})();
+</script>
 </body>
 </html>
