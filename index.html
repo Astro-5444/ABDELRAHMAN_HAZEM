@@ -11,13 +11,6 @@
 </head>
 <body>
 
-<!-- Loading screen (kinetic typography) -->
-<div class="ld-loader" id="loader" aria-hidden="true">
-  <div class="ld-word" id="loaderWord"></div>
-  <div class="ld-caption" id="loaderCaption">Mechatronics Engineer</div>
-</div>
-<noscript><style>.ld-loader{display:none;}</style></noscript>
-
 <!-- Nav -->
 <nav class="nav">
   <span class="nav-logo">A.H. Khalil <span class="nav-tagline"></span></span>
@@ -26,6 +19,7 @@
     <li><a href="#experience">Education</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#downloads">Credentials</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -333,6 +327,9 @@
       <a download href="assets/pdf/EGYPTIAN_EQUIVALENCE_CERTIFICATE.pdf" class="dl-card">
         <div class="dl-name">Egyptian equivalency certificate</div>
       </a>
+      <a download href="assets/pdf/Military-Exemption-Certificate.pdf" class="dl-card">
+        <div class="dl-name">Military Service Final Exemption Certificate</div>
+      </a>
     </div>
   </div>
 </section>
@@ -369,90 +366,7 @@
   <span class="foot-copy">&copy; Astro-5444 &middot; All rights reserved</span>
 </footer>
 
-<!-- Loader script: kinetic typography intro -->
-<script>
-(function(){
-  'use strict';
-
-  var loader   = document.getElementById('loader');
-  var wordEl   = document.getElementById('loaderWord');
-  var caption  = document.getElementById('loaderCaption');
-  if (!loader || !wordEl || !caption) return;
-
-  var text = 'Abdelrhman';
-  var stagger = 130;   // ms between letters
-  var baseDelay = 300; // ms before first letter
-  var rhythmOffsets = [0, 20, -10, 30, 0, 15, -20, 25, 5, -15];
-  var done = false;
-
-  function finish(){
-    if (done) return;
-    done = true;
-    loader.classList.add('done');
-    setTimeout(function(){
-      if (loader.parentNode) loader.parentNode.removeChild(loader);
-      window.dispatchEvent(new CustomEvent('loader-done'));
-    }, 700);
-  }
-
-  // Safety net: never block the site longer than ~6s
-  setTimeout(finish, 6000);
-
-  text.split('').forEach(function(ch, i){
-    var span = document.createElement('span');
-    span.className = 'ld-letter';
-    span.textContent = ch;
-    wordEl.appendChild(span);
-
-    var delay = baseDelay + i * stagger + (rhythmOffsets[i % rhythmOffsets.length] || 0);
-    setTimeout(function(){ span.classList.add('enter'); }, delay);
-  });
-
-  var totalTime = baseDelay + text.length * stagger + 900;
-
-  setTimeout(function(){
-    wordEl.classList.add('settled');
-    var letters = wordEl.querySelectorAll('.ld-letter');
-    for (var i = 0; i < letters.length; i++){
-      letters[i].style.animationDelay = (i * 0.15) + 's';
-    }
-    caption.classList.add('show');
-    setTimeout(finish, 1700);
-  }, totalTime);
-
-  // Ambient floating gold particles
-  for (var p = 0; p < 24; p++){
-    (function(){
-      var el = document.createElement('div');
-      el.className = 'ld-particle';
-      var size = Math.random() * 3 + 1;
-      el.style.width = size + 'px';
-      el.style.height = size + 'px';
-      el.style.left = Math.random() * 100 + '%';
-      el.style.top = Math.random() * 100 + '%';
-      el.style.opacity = (Math.random() * 0.4 + 0.1).toFixed(2);
-      loader.appendChild(el);
-
-      var duration = Math.random() * 6 + 6;
-      var delay = Math.random() * 4;
-      el.animate([
-        { transform: 'translateY(0px)', opacity: 0 },
-        { transform: 'translateY(-40px)', opacity: el.style.opacity },
-        { transform: 'translateY(-80px)', opacity: 0 }
-      ], {
-        duration: duration * 1000,
-        delay: delay * 1000,
-        iterations: Infinity,
-        easing: 'ease-in-out'
-      });
-    })();
-  }
-
-  // Click anywhere on the loader to skip straight to the site
-  loader.addEventListener('click', finish);
-})();
-</script>
-
+<!-- Hero paper: 3D roll-down CV reveal -->
 <script>
 (function(){
   'use strict';
@@ -469,10 +383,9 @@
   heroRight.style.perspectiveOrigin = '50% 40%';
 
   var loaded = 0;
-  var loaderDone = false;
 
   function maybeReveal(){
-    if (loaderDone && loaded >= NUM_SLICES) revealPaper();
+    if (loaded >= NUM_SLICES) revealPaper();
   }
 
   function onImageReady(){
@@ -480,19 +393,6 @@
     if (loaded < NUM_SLICES) return;
     maybeReveal();
   }
-
-  window.addEventListener('loader-done', function(){
-    loaderDone = true;
-    maybeReveal();
-  });
-
-  // Backstop: never leave the hero hidden if the loader script fails
-  setTimeout(function(){
-    loaderDone = true;
-    var loaderEl = document.getElementById('loader');
-    if (loaderEl) loaderEl.style.display = 'none';
-    maybeReveal();
-  }, 8000);
 
   for (var i = 0; i < foldImgs.length; i++){
     if (foldImgs[i].complete) onImageReady();
