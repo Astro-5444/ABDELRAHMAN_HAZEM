@@ -403,17 +403,29 @@ body{font-family:var(--sans);background:var(--bg);color:var(--paper);overflow-x:
 /* Projects - Scroll/Sticky Layout */
 .proj-layout{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
 .proj-list{display:flex;flex-direction:column;gap:5rem;padding-bottom:50vh;}
-.proj-row{display:flex;gap:2rem;opacity:0.3;transition:opacity .4s ease;cursor:default;}
-.proj-row.active{opacity:1;}
-.proj-row:hover{opacity:0.7;}
-.proj-row.active:hover{opacity:1;}
+.proj-row{display:flex;gap:2rem;opacity:.14;filter:blur(1.6px);transform:scale(.99);transition:opacity .5s ease,filter .5s ease,transform .5s ease;cursor:default;}
+.proj-row.active{opacity:1;filter:blur(0);transform:scale(1);}
+.proj-row:hover{opacity:.45;filter:blur(.8px);}
+.proj-row.active:hover{opacity:1;filter:blur(0);transform:scale(1);}
 .proj-num{font-family:var(--serif);font-size:1.6rem;color:var(--gold);font-style:italic;flex-shrink:0;}
 .proj-info{display:flex;flex-direction:column;gap:1.2rem;}
 .proj-name{font-family:var(--serif);font-size:2.4rem;color:var(--ink);line-height:1.1;}
 .proj-desc{font-size:1.4rem;color:var(--hard);line-height:1.6;}
-.proj-link{font-size:1.1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;width:fit-content;margin-top:0.5rem;}
-.proj-link::after{content:'→';}
-.proj-link:hover{opacity:.7;}
+.proj-link{margin-top:.6rem;display:inline-flex;align-items:center;gap:.8rem;padding:1.1rem 2.2rem;background:var(--gold);color:var(--ink);font-size:1.05rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;width:fit-content;transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease;}
+.proj-link::after{content:'→';transition:transform .2s ease;}
+a.proj-link[href*="youtu"]::before{content:'▶';font-size:.75em;}
+.proj-link:hover{opacity:1;transform:translateY(-2px);box-shadow:0 6px 18px rgba(201,168,76,.4);}
+.proj-link:hover::after{transform:translateX(3px);}
+.proj-row.active .proj-link{animation:projBtnPulse 2.6s ease-in-out infinite;}
+@keyframes projBtnPulse{
+  0%,100%{box-shadow:0 0 0 rgba(201,168,76,0);}
+  50%{box-shadow:0 4px 22px rgba(201,168,76,.45);}
+}
+
+/* Dim the section heading while a project is in focus */
+#projects.reading .ps-label,
+#projects.reading .ps-h2,
+#projects.reading .ps-micro{opacity:.18;}
 
 .proj-image-container{position:sticky;top:10rem;height:65vh;border:12px solid var(--paper);box-shadow:0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(28,26,20,.05);overflow:hidden;background:var(--paper2);border-radius:12px;}
 .proj-image-sticky{position:relative;width:100%;height:100%;border-radius:4px;overflow:hidden;}
@@ -540,7 +552,9 @@ body.dark .theme-toggle:hover{background:rgba(245,240,230,.08);}
   .proj-layout{grid-template-columns:1fr;}
   .proj-list{padding-bottom:10vh;}
   .proj-image-container{display:none;}
-  .proj-row{opacity:1;}
+  .proj-row{opacity:.15;filter:blur(1.2px);}
+  .proj-row.active{opacity:1;filter:blur(0);}
+  .proj-row:hover{opacity:.5;}
   .psi{padding:7rem 3.2rem;}
   .nav{padding:0 3.2rem;}
 }
