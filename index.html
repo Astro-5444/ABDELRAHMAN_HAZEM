@@ -565,6 +565,7 @@
           projImgs.forEach(function(img) { img.classList.remove('active'); });
 
           e.target.classList.add('active');
+          document.getElementById('projects').classList.add('reading');
           var idx = e.target.getAttribute('data-index');
 
           var targetImg = document.querySelector('.proj-img[data-index="' + idx + '"]');
